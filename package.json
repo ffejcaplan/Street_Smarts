@@ -1,11 +1,11 @@
 {
   "name": "react-sequelize-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "## A full-stack application template complete with passport local strategy authentication ### **Stack:** * node and express  * sequelize ORM * passport js authentication * create-react-app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "nodemon server.js && if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
