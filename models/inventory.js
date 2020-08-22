@@ -1,6 +1,6 @@
 module.exports = (sequelize, Datatypes) => {
   const Inventory = sequelize.define('Inventory', {
-    name: {
+    itemName: {
       type: Datatypes.STRING,
       allowNull: false,
     },
@@ -17,14 +17,10 @@ module.exports = (sequelize, Datatypes) => {
       allowNull: false,
     },
     category: {
-      type: Datatypes.BOOLEAN,
+      type: Datatypes.INTEGER,
       allowNull: false,
     },
   });
-
-  // menuItem.associate = (modles) => {
-  //     menuItem.
-  // }
 
   return Inventory;
 };

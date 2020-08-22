@@ -21,11 +21,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // id of location from location table
-    location: {
+    // id of location from location
+    locationId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
   });
+
+  Orders.associate = (models) => {
+    Orders.belongsToMany(models.Locations, {
+      through: 'OrderLocations',
+      as: 'orders',
+      foreignKey: 'locationId',
+      otherKey: 'orderId',
+    });
+  };
   return Orders;
 };
