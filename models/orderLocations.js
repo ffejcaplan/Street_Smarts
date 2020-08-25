@@ -24,6 +24,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(13, 2),
       allowNull: false,
     },
+    createdAt: {
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false,
+    },
+    updatedAt: {
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false,
+    },
   });
 
   return OrderLocations;
