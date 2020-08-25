@@ -1,23 +1,23 @@
-module.exports = (sequelize, Datatypes) => {
+module.exports = (sequelize, DataTypes) => {
   const Inventory = sequelize.define('Inventory', {
     itemName: {
-      type: Datatypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
-      type: Datatypes.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     price: {
-      type: Datatypes.DECIMAL(13, 2),
+      type: DataTypes.DECIMAL(13, 2),
       allowNull: false,
     },
     active: {
-      type: Datatypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
     },
     category: {
-      type: Datatypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     createdAt: {
@@ -31,6 +31,14 @@ module.exports = (sequelize, Datatypes) => {
       allowNull: false,
     },
   });
+  Inventory.associate = (models) => {
+    Inventory.belongsToMany(models.Orders, {
+      through: 'OrderItems',
+      as: 'inventory',
+      foreignKey: 'orderId',
+      otherKey: 'inventoryId',
+    });
+  };
 
   return Inventory;
 };
