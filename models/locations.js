@@ -29,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Locations.associate = (models) => {
-    Locations.belongsToMany(models.Locations, {
+    Locations.belongsToMany(models.Orders, {
       through: 'OrderLocations',
       as: 'locations',
-      foreignKey: 'orderId',
-      otherKey: 'locationId',
+      foreignKey: 'locationId',
+      otherKey: 'orderId',
     });
   };
   return Locations;

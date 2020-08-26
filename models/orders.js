@@ -1,7 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Orders = sequelize.define('Orders', {
     date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       allowNull: false,
     },
     time: {
@@ -39,11 +40,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Orders.associate = (models) => {
-    Orders.belongsToMany(models.Locations, {
+    Orders.belongsToMany(models.Orders, {
       through: 'OrderLocations',
       as: 'orders',
-      foreignKey: 'locationId',
-      otherKey: 'orderId',
+      foreignKey: 'orderId',
+      otherKey: 'Location',
     });
   };
 
@@ -51,8 +52,8 @@ module.exports = (sequelize, DataTypes) => {
     Orders.belongsToMany(models.Orders, {
       through: 'OrderItems',
       as: 'orders',
-      foreignKey: 'inventoryId',
-      otherKey: 'orderId',
+      foreignKey: 'orderId',
+      otherKey: 'Inventory',
     });
   };
   return Orders;

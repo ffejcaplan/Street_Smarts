@@ -18,8 +18,21 @@ router.get('/categories', (req, res) => {
     });
 });
 
+router.post('/categories/:category', (req, res) => {
+  console.log(req.body);
+  db.Categories.create({
+    name: req.params.category,
+  })
+    .then(() => {
+      res.status(200).json({ message: 'big success' });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
 // inventory
-router.get('/categories', (req, res) => {
+router.get('/inventory', (req, res) => {
   db.Invetory.findAll({})
     .then((inventory) => {
       res.json(inventory);
@@ -64,5 +77,17 @@ router.get('/locations', (req, res) => {
       console.error(err);
     });
 });
+
+router.get('/orderitems', (req, res) => {
+  db.OrderItems.findAll({})
+    .then((orderItems) => {
+      res.json(orderItems);
+    })
+    .catch((err) => {
+      res.status(400).json({ message: 'there was an error' });
+      console.error(err);
+    });
+});
+
 // random comment
 module.exports = router;
