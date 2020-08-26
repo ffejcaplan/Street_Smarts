@@ -1,19 +1,23 @@
 module.exports = (sequelize, DataTypes) => {
-  const Locations = sequelize.define('Locations', {
-    latitude: {
-      type: DataTypes.DECIMAL(10, 8),
+  const OrderItems = sequelize.define('OrderItems', {
+    orderId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    longitude: {
-      type: DataTypes.DECIMAL(11, 8),
+    inventoryId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    nickname: {
+    itemName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    active: {
-      type: DataTypes.BOOLEAN,
+    numberOfItem: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(13, 2),
       allowNull: false,
     },
     createdAt: {
@@ -28,13 +32,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Locations.associate = (models) => {
-    Locations.belongsToMany(models.Orders, {
-      through: 'OrderLocations',
-      as: 'locations',
-      foreignKey: 'locationId',
-      otherKey: 'orderId',
-    });
-  };
-  return Locations;
+  return OrderItems;
 };

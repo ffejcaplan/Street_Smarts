@@ -1,25 +1,26 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../AuthContext";
-import "../App.css";
-import { Container, Row, Button, Col } from "react-bootstrap";
-import Axios from "axios";
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../AuthContext';
+import '../App.css';
+import { Container, Row, Button, Col } from 'react-bootstrap';
+import Axios from 'axios';
+import PosContext from '../context/PosContext';
 
 function Home(props) {
-  
   const { isAuth, logout } = useContext(AuthContext);
 
-  const [secret, setSecret] = useState("");
+  const [secret, setSecret] = useState('');
 
   // this function is duplicated in the Members page component
-  // consider refactor 
+  // consider refactor
   const getSecret = async () => {
-    const secretResponse = await Axios.get("/api/secrets");
+    const secretResponse = await Axios.get('/api/secrets');
     console.log(secretResponse.data);
     setSecret(secretResponse.data);
   };
 
   return (
     <Container className="signup">
+      <PosContext />
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
           <h1>Home Page</h1>
@@ -27,7 +28,7 @@ function Home(props) {
             <>
               <Button
                 className="m-1"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   setSecret('');
                   logout();
@@ -37,9 +38,9 @@ function Home(props) {
               </Button>
               <Button
                 className="m-1"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
-                  props.history.push("/members");
+                  props.history.push('/members');
                 }}
               >
                 Members
@@ -49,18 +50,18 @@ function Home(props) {
             <>
               <Button
                 className="m-1"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
-                  props.history.push("/login");
+                  props.history.push('/login');
                 }}
               >
                 Login
               </Button>
               <Button
                 className="m-1"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
-                  props.history.push("/signup");
+                  props.history.push('/signup');
                 }}
               >
                 Signup
@@ -69,7 +70,7 @@ function Home(props) {
           )}
           <Button
             className="m-1"
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               getSecret();
             }}

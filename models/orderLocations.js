@@ -16,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(11, 8),
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
+    // date: {
+    //   type: DataTypes.DATEONLY,
+    //   allowNull: false,
+    // },
     total: {
       type: DataTypes.DECIMAL(13, 2),
       allowNull: false,
