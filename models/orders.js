@@ -1,13 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Orders = sequelize.define('Orders', {
     date: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     time: {
-      type: 'TIMESTAMP',
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      type: DataTypes.TIME,
       allowNull: false,
     },
     total: {

@@ -3,7 +3,7 @@ import { AuthContext } from '../AuthContext';
 import '../App.css';
 import { Container, Row, Button, Col } from 'react-bootstrap';
 import Axios from 'axios';
-import PosContext from '../context/PosContext';
+import PosContext from '../context/POS/PosContext';
 
 function Home(props) {
   const { isAuth, logout } = useContext(AuthContext);
