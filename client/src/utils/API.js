@@ -26,4 +26,18 @@ export default {
   postCategories: function (category) {
     return axios.post(`/api/categories/${category}`);
   },
+
+  getOrderId: function () {
+    return axios.get('/api/getorderid');
+  },
+
+  postOrder: function (order) {
+    return axios.post('api/postorder', order);
+  },
+  postItemOrder: function (item) {
+    return axios.post('api/postItemOrder', item);
+  },
+  postOrderLocation: function (order) {
+    return axios.post('api/postorderlocation', order);
+  },
 };

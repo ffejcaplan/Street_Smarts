@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js && if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "moment": "^2.27.0",
     "morgan": "^1.9.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",

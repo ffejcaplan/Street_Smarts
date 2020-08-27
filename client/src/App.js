@@ -10,7 +10,7 @@ import React from 'react';
 // import Signup from './pages/Signup';
 // import Login from './pages/Login';
 // import Members from './pages/Members';
-import PosContext from './context/PosContext';
+import { PosContextProvider } from './context/POS/PosContext';
 import Test from './components/Test';
 
 // Even though this is the App.js file, in the end we are not exactly exporting
@@ -59,10 +59,8 @@ import Test from './components/Test';
 // even though it is unnamed here, it will be imported as App in index.js
 export default function App() {
   return (
-    // <AuthProvider>
-    <div>
+    <PosContextProvider>
       <Test />
-    </div>
-    // </AuthProvider>
+    </PosContextProvider>
   );
 }
