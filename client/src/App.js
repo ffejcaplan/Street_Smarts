@@ -11,7 +11,7 @@ import React from 'react';
 // import Login from './pages/Login';
 // import Members from './pages/Members';
 import { PosContextProvider } from './context/POS/PosContext';
-import Test from './components/Test';
+import POS from './components/POS';
 
 // Even though this is the App.js file, in the end we are not exactly exporting
 // the App component.  We actually set up the app component to implement our react
@@ -60,7 +60,7 @@ import Test from './components/Test';
 export default function App() {
   return (
     <PosContextProvider>
-      <Test />
+      <POS />
     </PosContextProvider>
   );
 }
