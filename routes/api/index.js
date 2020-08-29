@@ -1,11 +1,7 @@
 const router = require('express').Router();
 const moment = require('moment');
-const isAuthenticated = require('../../config/middleware/isAuthenticated');
-const db = require('../../models');
 
-router.get('/secrets', isAuthenticated, (req, res) => {
-  res.json('Talk is cheap. Show me the code. -Linus Torvalds');
-});
+const db = require('../../models');
 
 // categories
 router.get('/categories', (req, res) => {

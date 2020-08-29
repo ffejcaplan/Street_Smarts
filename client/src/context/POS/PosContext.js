@@ -3,7 +3,7 @@ import PosReducer from './PosReducer';
 import API from '../../utils/API';
 
 const initialState = {
-  orderTotal: null,
+  orderTotal: 0,
   orderCustomer: '',
   orderPayment_method: '',
   orderLocationId: null,
@@ -11,13 +11,15 @@ const initialState = {
   orderLongitude: null,
   orderId: '',
   orderItems: [],
+  orderItemKey: 0,
   categories: [],
   items: '',
+  itemEditKey: 0,
   error: null,
   categoryKey: '',
   displayItemKey: '',
   numberOfItemsForOrder: 1,
-  orderItemDisplay: [],
+  reviewOrder: false,
   // loading: true,
 };
 
@@ -110,17 +112,50 @@ export const PosContextProvider = ({ children }) => {
   };
 
   const addToOrder = async (item, count) => {
-    const total = parseFloat(item.price) * parseFloat(count);
     try {
       await dispatch({
         type: 'ADD_TO_ORDER',
         payload: {
-          toDisplay: [count, total, item.itemName],
-          forOrders: { ...item },
+          key: state.orderItems.length + 1,
+          itemName: item.itemName,
+          itemId: item.id,
+          price: item.price,
+          numberOfItem: count,
         },
       });
     } catch (err) {
       console.error(err, 'add to order broken');
+    }
+  };
+
+  const falseReviewOrder = async () => {
+    try {
+      await dispatch({
+        type: 'FALSE_REVIEW_ORDER',
+      });
+    } catch (err) {
+      console.error(err, 'update review order');
+    }
+  };
+  const trueReviewOrder = async (key) => {
+    try {
+      await dispatch({
+        type: 'TRUE_REVIEW_ORDER',
+        payload: key,
+      });
+    } catch (err) {
+      console.error(err, 'update review order');
+    }
+  };
+
+  const updateOrderItem = async (newOrder, newTotal) => {
+    try {
+      await dispatch({
+        type: 'UPDATE_ORDER_ITEM',
+        payload: [newOrder, newTotal],
+      });
+    } catch (err) {
+      console.error(err, 'updateOrderItem');
     }
   };
 
@@ -129,8 +164,12 @@ export const PosContextProvider = ({ children }) => {
       value={{
         order: state.order,
         items: state.items,
+        itemEditKey: state.itemEditKey,
+        orderItems: state.orderItems,
+        orderTotal: state.orderTotal,
         categories: state.categories,
         categoryKey: state.categoryKey,
+        orderItemKey: state.orderItemKey,
         setCategoryKey,
         loadCategories,
         loadInventory,
@@ -141,6 +180,10 @@ export const PosContextProvider = ({ children }) => {
         addNumberOfItems,
         numberOfItemsForOrder: state.numberOfItemsForOrder,
         addToOrder,
+        falseReviewOrder,
+        trueReviewOrder,
+        reviewOrder: state.reviewOrder,
+        updateOrderItem,
       }}
     >
       {children}

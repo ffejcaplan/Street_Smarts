@@ -40,13 +40,40 @@ export default (state, action) => {
         numberOfItemsForOrder: state.numberOfItemsForOrder + 1,
       };
     case 'ADD_TO_ORDER':
+      const orderItems = [...state.orderItems, action.payload];
       return {
         ...state,
-        orderItemDisplay: (state.orderItemDisplay += `[${action.payload.toDisplay}],`),
+
         numberOfItemsForOrder: 1,
-        orderItem: action.payload.forOrders,
+        orderItems: orderItems,
+        orderTotal: orderItems.reduce((total, currentItem) => {
+          const itemTotal = currentItem.numberOfItem * currentItem.price;
+          return total + itemTotal;
+        }, 0),
+        // orderItemKey: state.orderItems.length,
+      };
+    case 'FALSE_REVIEW_ORDER':
+      return {
+        ...state,
+        reviewOrder: false,
+      };
+    case 'TRUE_REVIEW_ORDER':
+      return {
+        ...state,
+        itemEditKey: parseInt(action.payload),
+        reviewOrder: true,
+      };
+    case 'UPDATE_ORDER_ITEM':
+      return {
+        ...state,
+        orderItems: action.payload[0],
+        orderTotal: action.payload[1],
       };
 
+    // return {
+    //   ...state,
+    //   orderTotal: newTotal,
+    // };
     default:
       return state;
   }
