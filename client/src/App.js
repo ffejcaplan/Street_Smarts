@@ -4,6 +4,7 @@ import POS from './pages/POS';
 import PinLocation from './pages/PinLocation';
 import Reports from './pages/Reports';
 import Navbar from './components/Navbar';
+import Checkout from './pages/Checkout';
 import { PosContextProvider } from './context/POS/PosContext';
 
 export default function App() {
@@ -27,6 +28,11 @@ export default function App() {
           </Route>
           <Route exact path="/pos">
             <PinLocation />
+          </Route>
+          <Route exact path="/checkout">
+            <PosContextProvider>
+              <Checkout />
+            </PosContextProvider>
           </Route>
         </Switch>
       </Router>
