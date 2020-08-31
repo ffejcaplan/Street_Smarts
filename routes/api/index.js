@@ -147,5 +147,19 @@ router.post('/postorderlocation', (req, res) => {
     });
 });
 
+router.get('locations', (req, res) => {
+  db.Locations.findAll({})
+    .then((response) => {
+      console.log(response);
+      res.status(200).json(response, { success: true });
+    })
+    .catch((err) => {
+      console.error(err);
+      res
+        .status(400)
+        .json({ error: err, message: 'this did not work', success: false });
+    });
+});
+
 // random comment
 module.exports = router;
