@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { createContext, useReducer } from 'react';
+import LocationReducer from './LocationReducer';
+import API from '../../utils/API';
 
-export default function LocationsContext(props) {
-  // get request -- all locations on login
-  // ----/---- display all locations as options on login
-  // ----/---- onClick -- POST - switch active to true
+const initialState = {
+  longitude: '',
+  latitude: '',
+  locationId: '',
+  active: '',
+  nickname: '',
+};
 
-  // POST
-  // On login
-  // ----/---- if new location, option to post (set as active)
+export const LocationGlobalContext = createContext(initialState);
+export const LocationsContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(LocationReducer.initialState);
 
-  // GET -- active locations to display
-  return <></>;
-}
+  const loadLocations = async () => {};
+
+  return (
+    <LocationGlobalContext.Provider value={{ loadLocations }}>
+      <></>
+    </LocationGlobalContext.Provider>
+  );
+};

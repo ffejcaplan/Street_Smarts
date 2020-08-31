@@ -9,6 +9,7 @@ const initialState = {
   orderLocationId: null,
   orderLatitude: null,
   orderLongitude: null,
+  orderLocationNickname: null,
   orderId: '',
   orderItems: [],
   orderItemKey: 0,
@@ -184,6 +185,10 @@ export const PosContextProvider = ({ children }) => {
         trueReviewOrder,
         reviewOrder: state.reviewOrder,
         updateOrderItem,
+        orderLocationId: state.orderLocationId,
+        orderLatitude: state.orderLatitude,
+        orderLongitude: state.orderLongitude,
+        orderLocationNickname: state.orderLocationNickname,
       }}
     >
       {children}
