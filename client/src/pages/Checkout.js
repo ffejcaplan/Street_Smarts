@@ -6,10 +6,10 @@ export default function Checkout() {
     PosGlobalContext
   );
 
-  useEffect(() => {
-    loadCategories();
-    loadInventory();
-  }, []);
+  //   useEffect(() => {
+  //     loadCategories();
+  //     loadInventory();
+  //   }, []);
 
   return <></>;
 }

@@ -8,7 +8,9 @@ export default function SubmitOrderButton() {
   //   }, []);
   return (
     <>
-      <button href="/checkout">Submit Order</button>
+      <button className="btn btn-primary" href="/reports">
+        Checkout
+      </button>
     </>
   );
 }

@@ -6,6 +6,7 @@ import Reports from './pages/Reports';
 import Navbar from './components/Navbar';
 import Checkout from './pages/Checkout';
 import { PosContextProvider } from './context/POS/PosContext';
+import { LocationsContextProvider } from './context/Location/LocationsContext';
 
 export default function App() {
   return (
@@ -26,8 +27,12 @@ export default function App() {
           <Route exact path="/reports">
             <Reports />
           </Route>
-          <Route exact path="/pos">
-            <PinLocation />
+          <Route exact path="/pin">
+            <LocationsContextProvider>
+              <PosContextProvider>
+                <PinLocation />
+              </PosContextProvider>
+            </LocationsContextProvider>
           </Route>
           <Route exact path="/checkout">
             <PosContextProvider>
