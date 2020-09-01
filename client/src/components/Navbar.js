@@ -1,4 +1,5 @@
 import React from 'react';
+import PinButton from '../components/PinLocation/PinButton';
 
 export default function Navbar() {
   return (
@@ -31,7 +32,7 @@ export default function Navbar() {
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/pin">
-              Pin Location
+              <PinButton />
             </a>
           </li>
         </ul>

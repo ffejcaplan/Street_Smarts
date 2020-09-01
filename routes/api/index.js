@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const router = require('express').Router();
 const moment = require('moment');
 
@@ -98,6 +99,16 @@ router.get('/getorderid', (req, res) => {
     });
 });
 
+router.get('/currentlocation', (req, res) => {
+  db.Locations.findOne({ where: { active: true } })
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(400).json({ error: err, succes: false });
+    });
+});
+
 router.post('/postorder', (req, res) => {
   db.Orders.create({
     date: moment().format('MM-DD-YYYY'), // TODO get extension for current date and time
@@ -144,6 +155,55 @@ router.post('/postorderlocation', (req, res) => {
     })
     .catch((err) => {
       console.error(err);
+    });
+});
+
+router.post('/locations', (req, res) => {
+  db.Locations.update({ active: false }, { where: { active: true } }).then(
+    () => {
+      db.Locations.create({
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        nickname: req.body.nickname,
+        active: req.body.active,
+      })
+        .then((response) => {
+          res.status(200).json({ reply: response, success: true });
+        })
+        .catch((err) => {
+          res.status(400).json({ success: false });
+          console.error(err);
+        });
+    }
+  );
+});
+
+router.put('/locations/:id', (req, res) => {
+  db.Locations.update({ active: false }, { where: { active: true } }).then(
+    () => {
+      db.Locations.update({ active: true }, { where: { id: req.params.id } })
+        .then(() => {
+          res.status(200).json({ success: true });
+        })
+        .catch((err) => {
+          res.status(400).json({ success: false });
+          console.error(err);
+        });
+    }
+  );
+});
+
+router.get('locations', (req, res) => {
+  db.Locations.findAll({})
+    .then((response) => {
+      console.log(response);
+      res.status(200).json({ reply: response, success: true });
+    })
+    .catch((err) => {
+      console.error(err);
+      res
+        .status(400)
+        .json({ error: err, message: 'this did not work', success: false });
     });
 });
 

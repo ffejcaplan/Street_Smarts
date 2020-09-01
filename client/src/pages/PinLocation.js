@@ -1,34 +1,49 @@
 import React, { useContext, useEffect } from 'react';
-import { PosGlobalContext } from '../context/POS/PosContext';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import LocationTable from '../components/PinLocation/LocationTable';
+import CurrentOrSaved from '../components/PinLocation/CurrentOrSaved';
+import PinCurrentLocation from '../components/PinLocation/PinCurrentLocation';
+import { LocationGlobalContext } from '../context/Location/LocationsContext';
 
 export default function PinLocation() {
-  //   const { latitude, longitude, error } = usePosition();
-  //   useEffect(() => {
-  // 1. get list of locations from location table
-  // 2. get current location and pin on map
-  const { setLocation } = useContext(PosGlobalContext);
+  const {
+    setCurrentLocation,
+    currentLocation,
+    selected,
+    newLocation,
+  } = useContext(LocationGlobalContext);
 
-  let viewport = {
-    longitude: '',
-    latitude: '',
-    locationId: '',
-    locationNickname: '',
-    zoom: 3,
-    width: '50vw',
-    height: '50vh',
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success);
+    }
+  };
+  const success = (position) => {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    console.log(lat, long);
+    setCurrentLocation({
+      longitude: long,
+      latitude: lat,
+      zoom: 12,
+      width: '50vw',
+      height: '50vh',
+    });
   };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      viewport.longitude = position.coords.longitude;
-      viewport.latitude = position.coords.latitude;
-      // });
-      console.log(viewport);
-    });
+    getLocation();
   }, []);
+  console.log(currentLocation);
 
-  return <></>;
+  if (selected === false && newLocation === false) {
+    return <CurrentOrSaved />;
+  }
+  if (selected === true && newLocation === false) {
+    return <LocationTable />;
+  }
+  if (selected === true && newLocation === true) {
+    return <PinCurrentLocation />;
+  }
 }
 
 // return (
@@ -38,3 +53,19 @@ export default function PinLocation() {
 //     mapStyle="mapbox://styles/ffejcap5/cke8wj61j5gh91atb9cwiygp8"
 //   ></ReactMapGL>
 // );
+
+//   const { latitude, longitude, error } = usePosition();
+//   useEffect(() => {
+// 1. get list of locations from location table
+// 2. get current location and pin on map
+//   const { setLocation } = useContext(PosGlobalContext);
+
+//   let viewport = {
+//     longitude: '',
+//     latitude: '',
+//     locationId: '',
+//     locationNickname: '',
+//     zoom: 3,
+//     width: '50vw',
+//     height: '50vh',
+//   };

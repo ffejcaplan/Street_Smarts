@@ -11,7 +11,9 @@ import { LocationsContextProvider } from './context/Location/LocationsContext';
 export default function App() {
   return (
     <>
-      <Navbar />
+      <LocationsContextProvider>
+        <Navbar />
+      </LocationsContextProvider>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -19,21 +21,23 @@ export default function App() {
               <POS />
             </PosContextProvider>
           </Route>
+
           <Route exact path="/pos">
             <PosContextProvider>
               <POS />
             </PosContextProvider>
           </Route>
+
           <Route exact path="/reports">
             <Reports />
           </Route>
+
           <Route exact path="/pin">
             <LocationsContextProvider>
-              <PosContextProvider>
-                <PinLocation />
-              </PosContextProvider>
+              <PinLocation />
             </LocationsContextProvider>
           </Route>
+
           <Route exact path="/checkout">
             <PosContextProvider>
               <Checkout />
