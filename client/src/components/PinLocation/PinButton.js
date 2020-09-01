@@ -11,7 +11,7 @@ export default function PinButton() {
     if (pinned === false) {
       return <button>Pin Location</button>;
     }
-  }, [pinned]);
+  }, []);
 
   if (pinned !== false) {
     return <button>Un-Pin Location</button>;
