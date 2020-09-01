@@ -3,9 +3,13 @@ import BackButton from './BackButton';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
 
 export default function LocationTable() {
-  const { locations, loadLocations, setActive, backPinLocation } = useContext(
-    LocationGlobalContext
-  );
+  const {
+    locations,
+    loadLocations,
+    setActive,
+    backPinLocation,
+    togglePin,
+  } = useContext(LocationGlobalContext);
 
   useEffect(() => {
     loadLocations();
@@ -17,6 +21,7 @@ export default function LocationTable() {
   // };
   const chooseLocation = (id) => {
     setActive(id);
+    togglePin();
     backPinLocation();
   };
 
