@@ -24,7 +24,7 @@ export default function PinLocation() {
     setCurrentLocation({
       longitude: long,
       latitude: lat,
-      zoom: 10,
+      zoom: 12,
       width: '50vw',
       height: '50vh',
     });

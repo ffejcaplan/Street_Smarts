@@ -5,15 +5,15 @@ import PinLocation from './pages/PinLocation';
 import Reports from './pages/Reports';
 import Navbar from './components/Navbar';
 import Checkout from './pages/Checkout';
-import LocationTable from './components/PinLocation/LocationTable';
-import PinCurrentLocation from './components/PinLocation/PinCurrentLocation';
 import { PosContextProvider } from './context/POS/PosContext';
 import { LocationsContextProvider } from './context/Location/LocationsContext';
 
 export default function App() {
   return (
     <>
-      <Navbar />
+      <LocationsContextProvider>
+        <Navbar />
+      </LocationsContextProvider>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -34,9 +34,7 @@ export default function App() {
 
           <Route exact path="/pin">
             <LocationsContextProvider>
-              <PosContextProvider>
-                <PinLocation />
-              </PosContextProvider>
+              <PinLocation />
             </LocationsContextProvider>
           </Route>
 
@@ -44,21 +42,6 @@ export default function App() {
             <PosContextProvider>
               <Checkout />
             </PosContextProvider>
-          </Route>
-
-          <Route exact path="/locationtable">
-            <LocationsContextProvider>
-              <PosContextProvider>
-                <LocationTable />
-              </PosContextProvider>
-            </LocationsContextProvider>
-          </Route>
-          <Route exact path="/currentlocation">
-            <LocationsContextProvider>
-              <PosContextProvider>
-                <PinCurrentLocation />
-              </PosContextProvider>
-            </LocationsContextProvider>
           </Route>
         </Switch>
       </Router>

@@ -69,6 +69,14 @@ export default (state, action) => {
         orderItems: action.payload[0],
         orderTotal: action.payload[1],
       };
+    case 'GET_CURRENT_LOCATION':
+      return {
+        ...state,
+        orderLocationId: action.payload.id,
+        orderLongitude: action.payload.longitude,
+        orderLatitude: action.payload.latitude,
+        orderLocationNickname: action.payload.nickname,
+      };
 
     // return {
     //   ...state,

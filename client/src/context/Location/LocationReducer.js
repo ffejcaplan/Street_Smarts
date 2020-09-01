@@ -29,6 +29,13 @@ export default (state, action) => {
         selected: false,
         newLocation: false,
       };
+
+    case 'TOGGLE_PIN':
+      return {
+        ...state,
+        pinned: true,
+      };
+
     default:
       return state;
   }

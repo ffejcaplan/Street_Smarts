@@ -1,23 +1,23 @@
 import React, { useContext, useEffect } from 'react';
+import BackButton from './BackButton';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
 
 export default function LocationTable() {
-  const { locations, loadLocations, backPinLocation } = useContext(
+  const { locations, loadLocations, setActive, backPinLocation } = useContext(
     LocationGlobalContext
   );
 
   useEffect(() => {
     loadLocations();
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   viewport.longitude = position.coords.longitude;
-    //   viewport.latitude = position.coords.latitude;
-    //   // });
-    //   console.log(viewport);
-    // });
   }, []);
-  console.log(locations);
-  const buttonClick = () => {
-    console.log('hello');
+
+  // const buttonClick = (id) => {
+  //
+  //
+  // };
+  const chooseLocation = (id) => {
+    setActive(id);
+    backPinLocation();
   };
 
   return (
@@ -28,9 +28,8 @@ export default function LocationTable() {
         marginRight: 'auto',
       }}
     >
-      <button className="btn btn-primary" onClick={backPinLocation}>
-        Back
-      </button>
+      <BackButton />
+
       <table className="table">
         <thead>
           <tr>
@@ -48,7 +47,13 @@ export default function LocationTable() {
                 <tr>
                   <td>
                     {location.id}.{' '}
-                    <button className="btn btn-primary" onClick={buttonClick}>
+                    <button
+                      value={location.id}
+                      className="btn btn-primary"
+                      onClick={(e) => {
+                        chooseLocation(e.target.value);
+                      }}
+                    >
                       Select
                     </button>
                   </td>

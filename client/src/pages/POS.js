@@ -14,13 +14,17 @@ export default function POS() {
   //     console.log(items);
   //   };
 
-  const { loadCategories, loadInventory, orderTotal } = useContext(
-    PosGlobalContext
-  );
+  const {
+    loadCategories,
+    loadInventory,
+    orderTotal,
+    getCurrentLocation,
+  } = useContext(PosGlobalContext);
 
   useEffect(() => {
     loadCategories();
     loadInventory();
+    getCurrentLocation();
   }, []);
 
   return (

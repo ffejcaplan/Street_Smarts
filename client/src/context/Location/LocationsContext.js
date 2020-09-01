@@ -7,6 +7,7 @@ const initialState = {
   currentLocation: [],
   selected: false,
   newLocation: false,
+  pinned: false,
 };
 
 export const LocationGlobalContext = createContext(initialState);
@@ -15,7 +16,6 @@ export const LocationsContextProvider = ({ children }) => {
 
   const loadLocations = async () => {
     try {
-      console.log('hello?');
       const locations = await LocationsAPI.loadLocations();
       dispatch({
         type: 'LOAD_LOCATIONS',
@@ -23,6 +23,27 @@ export const LocationsContextProvider = ({ children }) => {
       });
     } catch (err) {
       console.error(err + 'load locations fail');
+    }
+  };
+
+  const setActive = async (id) => {
+    try {
+      const activeLocal = await LocationsAPI.putLocation(id);
+      console.log(activeLocal);
+    } catch (err) {
+      console.error(err, 'set active');
+    }
+  };
+
+  const postLocation = async (location) => {
+    try {
+      const newLocation = await LocationsAPI.postLocation(location);
+      // .then(() => {
+      //   loadLocations();
+      // });
+      console.log(newLocation);
+    } catch (err) {
+      console.error(err, 'hello???');
     }
   };
 
@@ -68,6 +89,16 @@ export const LocationsContextProvider = ({ children }) => {
     }
   };
 
+  const togglePin = async () => {
+    try {
+      dispatch({
+        type: 'TOGGLE_PIN',
+      });
+    } catch (err) {
+      console.error(err, 'toggle Pin');
+    }
+  };
+
   return (
     <LocationGlobalContext.Provider
       value={{
@@ -80,6 +111,11 @@ export const LocationsContextProvider = ({ children }) => {
         chooseSaved,
         chooseCurrentLocation,
         backPinLocation,
+        pinned: state.pinned,
+        togglePin,
+        pinButton: state.pinButton,
+        postLocation,
+        setActive,
       }}
     >
       {children}

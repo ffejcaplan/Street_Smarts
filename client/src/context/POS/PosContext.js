@@ -160,9 +160,23 @@ export const PosContextProvider = ({ children }) => {
     }
   };
 
+  const getCurrentLocation = async () => {
+    try {
+      const currentLocation = await API.getCurrentLocation();
+      dispatch({
+        type: 'GET_CURRENT_LOCATION',
+        payload: currentLocation.data,
+      });
+      console.log(currentLocation.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <PosGlobalContext.Provider
       value={{
+        orderLatitude: state.orderLatitude,
         order: state.order,
         items: state.items,
         itemEditKey: state.itemEditKey,
@@ -189,6 +203,7 @@ export const PosContextProvider = ({ children }) => {
         orderLatitude: state.orderLatitude,
         orderLongitude: state.orderLongitude,
         orderLocationNickname: state.orderLocationNickname,
+        getCurrentLocation,
       }}
     >
       {children}

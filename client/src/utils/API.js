@@ -40,4 +40,7 @@ export default {
   postOrderLocation: function (order) {
     return axios.post('api/postorderlocation', order);
   },
+  getCurrentLocation: function () {
+    return axios.get('api/currentlocation');
+  },
 };
