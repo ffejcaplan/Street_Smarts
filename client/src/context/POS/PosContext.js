@@ -122,7 +122,7 @@ export const PosContextProvider = ({ children }) => {
             key: state.orderItems.length + 1,
             itemName: item.itemName,
             itemId: item.id,
-            price: item.price,
+            price: parseFloat(item.price),
             numberOfItem: count,
           },
         });

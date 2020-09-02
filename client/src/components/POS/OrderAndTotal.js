@@ -22,20 +22,28 @@ export default function OrderAndTotal() {
   };
 
   const deleteItemFromOrder = (key) => {
-    let index = parseInt(key) - 2;
-    revisedOrder.splice(index, 1);
-    let newTotal = 0;
+    console.log(key);
+
+    //TODO why filter no work?
+
     revisedOrder.map((item) => {
-      newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
-      return newTotal;
+      console.log(item.key);
+      if (parseInt(item.key) === parseInt(key)) {
+        const index = revisedOrder.indexOf(item);
+        revisedOrder.splice(index, 1);
+        let newTotal = 0;
+        revisedOrder.map((item) => {
+          newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
+          return newTotal;
+        });
+        updateOrderItem(revisedOrder, newTotal);
+      }
     });
-    updateOrderItem(revisedOrder, newTotal);
   };
   return (
     <table className="table">
       {orderItems &&
         orderItems.map((orderItem) => {
-          console.log(orderItem);
           return (
             <tbody key={i++}>
               <tr>
@@ -58,7 +66,7 @@ export default function OrderAndTotal() {
                   {' '}
                   $
                   {parseFloat(orderItem.price) *
-                    parseFloat(orderItem.numberOfItem)}
+                    parseInt(orderItem.numberOfItem)}
                 </td>
                 <td>
                   <button

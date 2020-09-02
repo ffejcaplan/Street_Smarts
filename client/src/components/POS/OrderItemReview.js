@@ -54,7 +54,6 @@ export default function OrderItemReview() {
       updateOrderItem(revisedOrder, newTotal);
       setSelectedFalse();
       falseReviewOrder();
-      console.log(revisedOrder);
     } else {
       setSelectedFalse();
       falseReviewOrder();

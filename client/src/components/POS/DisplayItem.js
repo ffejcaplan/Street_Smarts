@@ -24,7 +24,9 @@ export default function DisplayItem() {
     if (match.length > 0) {
       const matchKey = match[0].key;
 
-      revisedOrder[matchKey - 1].numberOfItem += numberOfItemsForOrder;
+      revisedOrder[matchKey - 1].numberOfItem += parseInt(
+        numberOfItemsForOrder
+      );
       console.log(revisedOrder);
       let newTotal = 0;
       revisedOrder.map((item) => {
