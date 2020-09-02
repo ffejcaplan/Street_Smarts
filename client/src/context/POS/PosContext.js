@@ -204,6 +204,15 @@ export const PosContextProvider = ({ children }) => {
       console.error(err, 'set selected true');
     }
   };
+  const resetCount = () => {
+    try {
+      dispatch({
+        type: 'RESET_COUNT',
+      });
+    } catch (err) {
+      console.error(err, 'reset count');
+    }
+  };
 
   return (
     <PosGlobalContext.Provider
@@ -239,6 +248,7 @@ export const PosContextProvider = ({ children }) => {
         menuItemSelect: state.menuItemSelect,
         setSelectedFalse,
         setSelectedTrue,
+        resetCount,
       }}
     >
       {children}

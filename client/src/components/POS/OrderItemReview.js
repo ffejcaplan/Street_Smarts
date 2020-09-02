@@ -16,9 +16,6 @@ export default function OrderItemReview() {
 
   const revisedOrder = orderItems;
 
-  console.log('world hello');
-  console.log(itemEditKey);
-
   const editExistingorder = (operation, key) => {
     if (operation === 'minus') {
       revisedOrder
@@ -41,13 +38,27 @@ export default function OrderItemReview() {
       newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
       return newTotal;
     });
-    console.log(newTotal);
     updateOrderItem(revisedOrder, newTotal);
   };
 
-  const addUpdatedToOrder = () => {
-    setSelectedFalse();
-    falseReviewOrder();
+  const addUpdatedToOrder = (key, value) => {
+    //if value ===0 delete target from order items
+    if (value === 0) {
+      let index = parseInt(key) - 1;
+      revisedOrder.splice(index, 1);
+      let newTotal = 0;
+      revisedOrder.map((item) => {
+        newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
+        return newTotal;
+      });
+      updateOrderItem(revisedOrder, newTotal);
+      setSelectedFalse();
+      falseReviewOrder();
+      console.log(revisedOrder);
+    } else {
+      setSelectedFalse();
+      falseReviewOrder();
+    }
   };
 
   return (
@@ -57,13 +68,11 @@ export default function OrderItemReview() {
         orderItems
           .filter((item) => parseInt(item.key) === parseInt(itemEditKey))
           .map((info) => {
-            console.log(info);
             return (
               <div key={info.key} id="displayItemDiv">
                 <p>{info.itemName}</p>
                 <p>{info.price}</p>
                 <div>
-                  {console.log('hello world')}
                   <button
                     className="btn btn-primary"
                     style={{ border: '1px solid white' }}
@@ -75,8 +84,11 @@ export default function OrderItemReview() {
                   </button>
                   <button
                     className="btn btn-primary"
+                    value={info.key}
                     style={{ border: '1px solid white' }}
-                    onClick={addUpdatedToOrder}
+                    onClick={(e) => {
+                      addUpdatedToOrder(e.target.value, info.numberOfItem);
+                    }}
                   >
                     Add {info.numberOfItem} to Order
                   </button>

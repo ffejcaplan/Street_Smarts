@@ -12,14 +12,31 @@ export default function DisplayItem() {
     addNumberOfItems,
     falseReviewOrder,
     setSelectedFalse,
+    orderItems,
+    updateOrderItem,
+    resetCount,
   } = useContext(PosGlobalContext);
 
-  //   useEffect(() => {
-  //     loadInventory();
-  //   }, []);
+  const revisedOrder = orderItems;
+
   const orderFunction = (info, numberOfItemsForOrder) => {
-    falseReviewOrder();
-    addToOrder(info, numberOfItemsForOrder);
+    const match = orderItems.filter((item) => item.itemId === info.id);
+    if (match.length > 0) {
+      const matchKey = match[0].key;
+
+      revisedOrder[matchKey - 1].numberOfItem += numberOfItemsForOrder;
+      console.log(revisedOrder);
+      let newTotal = 0;
+      revisedOrder.map((item) => {
+        newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
+        return newTotal;
+      });
+      updateOrderItem(revisedOrder, newTotal);
+      resetCount();
+    } else {
+      falseReviewOrder();
+      addToOrder(info, numberOfItemsForOrder);
+    }
   };
 
   const submitItem = (info, numItems) => {

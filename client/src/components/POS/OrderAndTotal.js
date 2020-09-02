@@ -12,18 +12,17 @@ export default function OrderAndTotal() {
   //     loadCategories();
   //   }, []);
   let i = 1;
-  let j = 1;
-  let k = 1;
 
   let revisedOrder = orderItems;
 
   const reviewSelectedItem = (target) => {
     setSelectedTrue();
-    trueReviewOrder(target);
+    const editNumber = parseInt(target) + 1;
+    trueReviewOrder(editNumber);
   };
 
   const deleteItemFromOrder = (key) => {
-    let index = parseInt(key) - 1;
+    let index = parseInt(key) - 2;
     revisedOrder.splice(index, 1);
     let newTotal = 0;
     revisedOrder.map((item) => {
@@ -36,13 +35,14 @@ export default function OrderAndTotal() {
     <table className="table">
       {orderItems &&
         orderItems.map((orderItem) => {
+          console.log(orderItem);
           return (
             <tbody key={i++}>
               <tr>
                 <td>
                   <button
                     // TODO figure out a key
-                    value={j++}
+                    value={orderItem.key}
                     className="row"
                     style={{ marginLeft: '10px' }}
                     onClick={(e) => {
@@ -62,7 +62,7 @@ export default function OrderAndTotal() {
                 </td>
                 <td>
                   <button
-                    value={k++}
+                    value={orderItem.key}
                     onClick={(e) => deleteItemFromOrder(e.target.value)}
                   >
                     delete
