@@ -9,7 +9,7 @@ export default function ReviewItems() {
   const { reviewOrder } = useContext(PosGlobalContext);
 
   {
-    if (reviewOrder == false) {
+    if (reviewOrder === false) {
       return <DisplayItem />;
     } else {
       return <OrderItemReview />;
