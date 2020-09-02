@@ -10,4 +10,7 @@ export default {
   putLocation: function (id) {
     return axios.put(`/api/locations/${id}`);
   },
+  resetPin: function () {
+    return axios.put('/api/resetpin');
+  },
 };

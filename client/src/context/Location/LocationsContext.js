@@ -99,6 +99,18 @@ export const LocationsContextProvider = ({ children }) => {
     }
   };
 
+  const resetPin = async () => {
+    const reset = await LocationsAPI.resetPin();
+    console.log(reset);
+    try {
+      dispatch({
+        type: 'RESET_PIN',
+      });
+    } catch (err) {
+      console.error(err, 'reset pin');
+    }
+  };
+
   return (
     <LocationGlobalContext.Provider
       value={{
@@ -116,6 +128,7 @@ export const LocationsContextProvider = ({ children }) => {
         pinButton: state.pinButton,
         postLocation,
         setActive,
+        resetPin,
       }}
     >
       {children}

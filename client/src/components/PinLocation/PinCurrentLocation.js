@@ -5,9 +5,7 @@ import BackButton from './BackButton';
 import LocationNickname from './LocationNickname';
 
 export default function PinCurrentLocation(props) {
-  const { currentLocation, togglePin, pinned } = useContext(
-    LocationGlobalContext
-  );
+  const { currentLocation } = useContext(LocationGlobalContext);
 
   //   useEffect(() => {
   //     console.log(currentLocation);

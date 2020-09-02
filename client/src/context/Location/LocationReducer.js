@@ -35,6 +35,11 @@ export default (state, action) => {
         ...state,
         pinned: true,
       };
+    case 'RESET_PIN':
+      return {
+        ...state,
+        pinned: false,
+      };
 
     default:
       return state;

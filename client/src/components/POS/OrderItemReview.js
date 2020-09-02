@@ -7,6 +7,7 @@ export default function OrderItemReview() {
     orderItems,
     falseReviewOrder,
     updateOrderItem,
+    setSelectedFalse,
   } = useContext(PosGlobalContext);
 
   //   useEffect(() => {
@@ -44,8 +45,13 @@ export default function OrderItemReview() {
     updateOrderItem(revisedOrder, newTotal);
   };
 
+  const addUpdatedToOrder = () => {
+    setSelectedFalse();
+    falseReviewOrder();
+  };
+
   return (
-    <>
+    <div className="container">
       {itemEditKey &&
         orderItems &&
         orderItems
@@ -59,16 +65,24 @@ export default function OrderItemReview() {
                 <div>
                   {console.log('hello world')}
                   <button
+                    className="btn btn-primary"
+                    style={{ border: '1px solid white' }}
                     onClick={() => {
                       editExistingorder('minus', info.key);
                     }}
                   >
                     -
                   </button>
-                  <button onClick={falseReviewOrder}>
+                  <button
+                    className="btn btn-primary"
+                    style={{ border: '1px solid white' }}
+                    onClick={addUpdatedToOrder}
+                  >
                     Add {info.numberOfItem} to Order
                   </button>
                   <button
+                    className="btn btn-primary"
+                    style={{ border: '1px solid white' }}
                     onClick={() => {
                       editExistingorder('plus', info.key);
                     }}
@@ -79,6 +93,6 @@ export default function OrderItemReview() {
               </div>
             );
           })}
-    </>
+    </div>
   );
 }

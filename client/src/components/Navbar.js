@@ -1,13 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import PinButton from '../components/PinLocation/PinButton';
 
 export default function Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        {/* <Link to="/">Navbar</Link> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -19,25 +19,25 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="/pos">
+              <Link className="nav-link" to="/pos">
                 Register
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/reports">
+              <Link className="nav-link" to="/reports">
                 Reports
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/pin"></a>
+              </Link>
             </li>
           </ul>
         </div>
+        <Link to="/pin">
+          <PinButton />
+        </Link>
       </nav>
-      <PinButton />
     </>
   );
 }

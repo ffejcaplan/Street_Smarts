@@ -12,39 +12,39 @@ export default function App() {
   return (
     <>
       <LocationsContextProvider>
-        <Navbar />
+        <Router>
+          <>
+            <Navbar />
+            <Switch>
+              <Route exact path="/">
+                <PosContextProvider>
+                  <POS />
+                </PosContextProvider>
+              </Route>
+
+              <Route exact path="/pos">
+                <PosContextProvider>
+                  <POS />
+                </PosContextProvider>
+              </Route>
+
+              <Route exact path="/reports">
+                <Reports />
+              </Route>
+
+              <Route exact path="/pin">
+                <PinLocation />
+              </Route>
+
+              <Route exact path="/checkout">
+                <PosContextProvider>
+                  <Checkout />
+                </PosContextProvider>
+              </Route>
+            </Switch>
+          </>
+        </Router>
       </LocationsContextProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <PosContextProvider>
-              <POS />
-            </PosContextProvider>
-          </Route>
-
-          <Route exact path="/pos">
-            <PosContextProvider>
-              <POS />
-            </PosContextProvider>
-          </Route>
-
-          <Route exact path="/reports">
-            <Reports />
-          </Route>
-
-          <Route exact path="/pin">
-            <LocationsContextProvider>
-              <PinLocation />
-            </LocationsContextProvider>
-          </Route>
-
-          <Route exact path="/checkout">
-            <PosContextProvider>
-              <Checkout />
-            </PosContextProvider>
-          </Route>
-        </Switch>
-      </Router>
     </>
   );
 }

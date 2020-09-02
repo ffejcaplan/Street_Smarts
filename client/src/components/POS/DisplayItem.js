@@ -11,6 +11,7 @@ export default function DisplayItem() {
     addToOrder,
     addNumberOfItems,
     falseReviewOrder,
+    setSelectedFalse,
   } = useContext(PosGlobalContext);
 
   //   useEffect(() => {
@@ -18,11 +19,16 @@ export default function DisplayItem() {
   //   }, []);
   const orderFunction = (info, numberOfItemsForOrder) => {
     falseReviewOrder();
-
     addToOrder(info, numberOfItemsForOrder);
   };
 
+  const submitItem = (info, numItems) => {
+    orderFunction(info, numItems);
+    setSelectedFalse();
+  };
+
   return (
+    // <div style={{ height: '100%', width: '100%', border: '1px solid black' }}>
     <>
       {displayItemKey &&
         items &&
@@ -35,6 +41,8 @@ export default function DisplayItem() {
                 <p>{info.price}</p>
                 <div>
                   <button
+                    className="btn btn-primary"
+                    style={{ border: '1px solid white' }}
                     onClick={() => {
                       minusNumberOfItems(numberOfItemsForOrder);
                     }}
@@ -42,15 +50,24 @@ export default function DisplayItem() {
                     -
                   </button>
                   <button
-                    onClick={() => orderFunction(info, numberOfItemsForOrder)}
+                    className="btn btn-primary"
+                    style={{ border: '1px solid white' }}
+                    onClick={() => submitItem(info, numberOfItemsForOrder)}
                   >
                     Add {numberOfItemsForOrder} to Order
                   </button>
-                  <button onClick={addNumberOfItems}>+</button>
+                  <button
+                    className="btn btn-primary"
+                    style={{ border: '1px solid white' }}
+                    onClick={addNumberOfItems}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             );
           })}
     </>
+    // </div>
   );
 }

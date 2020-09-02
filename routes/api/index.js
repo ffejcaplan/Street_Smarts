@@ -193,7 +193,19 @@ router.put('/locations/:id', (req, res) => {
   );
 });
 
+router.put('/resetpin', (req, res) => {
+  db.Locations.update({ active: false }, { where: { active: true } })
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).json({ success: false });
+    });
+});
+
 router.get('locations', (req, res) => {
+  console.log('reset');
   db.Locations.findAll({})
     .then((response) => {
       console.log(response);

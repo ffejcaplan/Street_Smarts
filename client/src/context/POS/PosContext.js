@@ -21,6 +21,7 @@ const initialState = {
   displayItemKey: '',
   numberOfItemsForOrder: 1,
   reviewOrder: false,
+  menuItemSelect: false,
   // loading: true,
 };
 
@@ -113,19 +114,29 @@ export const PosContextProvider = ({ children }) => {
   };
 
   const addToOrder = async (item, count) => {
-    try {
-      await dispatch({
-        type: 'ADD_TO_ORDER',
-        payload: {
-          key: state.orderItems.length + 1,
-          itemName: item.itemName,
-          itemId: item.id,
-          price: item.price,
-          numberOfItem: count,
-        },
-      });
-    } catch (err) {
-      console.error(err, 'add to order broken');
+    if (count > 0) {
+      try {
+        await dispatch({
+          type: 'ADD_TO_ORDER',
+          payload: {
+            key: state.orderItems.length + 1,
+            itemName: item.itemName,
+            itemId: item.id,
+            price: item.price,
+            numberOfItem: count,
+          },
+        });
+      } catch (err) {
+        console.error(err, 'add to order broken');
+      }
+    } else if (count < 1) {
+      try {
+        await dispatch({
+          type: 'RESET_COUNT',
+        });
+      } catch (err) {
+        console.error(err, 'reset count');
+      }
     }
   };
 
@@ -163,13 +174,34 @@ export const PosContextProvider = ({ children }) => {
   const getCurrentLocation = async () => {
     try {
       const currentLocation = await API.getCurrentLocation();
-      dispatch({
-        type: 'GET_CURRENT_LOCATION',
-        payload: currentLocation.data,
-      });
-      console.log(currentLocation.data);
+      if (currentLocation.data) {
+        dispatch({
+          type: 'GET_CURRENT_LOCATION',
+          payload: currentLocation.data,
+        });
+      }
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const setSelectedFalse = () => {
+    try {
+      dispatch({
+        type: 'SET_SELECTED_FALSE',
+      });
+    } catch (err) {
+      console.error(err, 'set selected false');
+    }
+  };
+
+  const setSelectedTrue = () => {
+    try {
+      dispatch({
+        type: 'SET_SELECTED_TRUE',
+      });
+    } catch (err) {
+      console.error(err, 'set selected true');
     }
   };
 
@@ -204,6 +236,9 @@ export const PosContextProvider = ({ children }) => {
         orderLongitude: state.orderLongitude,
         orderLocationNickname: state.orderLocationNickname,
         getCurrentLocation,
+        menuItemSelect: state.menuItemSelect,
+        setSelectedFalse,
+        setSelectedTrue,
       }}
     >
       {children}

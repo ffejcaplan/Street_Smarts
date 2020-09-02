@@ -39,6 +39,12 @@ export default (state, action) => {
         ...state,
         numberOfItemsForOrder: state.numberOfItemsForOrder + 1,
       };
+
+    case 'RESET_COUNT':
+      return {
+        ...state,
+        numberOfItemsForOrder: 1,
+      };
     case 'ADD_TO_ORDER':
       const orderItems = [...state.orderItems, action.payload];
       return {
@@ -77,7 +83,17 @@ export default (state, action) => {
         orderLatitude: action.payload.latitude,
         orderLocationNickname: action.payload.nickname,
       };
+    case 'SET_SELECTED_FALSE':
+      return {
+        ...state,
+        menuItemSelect: false,
+      };
 
+    case 'SET_SELECTED_TRUE':
+      return {
+        ...state,
+        menuItemSelect: true,
+      };
     // return {
     //   ...state,
     //   orderTotal: newTotal,
