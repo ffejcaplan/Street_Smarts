@@ -122,7 +122,7 @@ export const PosContextProvider = ({ children }) => {
             key: state.orderItems.length + 1,
             itemName: item.itemName,
             itemId: item.id,
-            price: item.price,
+            price: parseFloat(item.price),
             numberOfItem: count,
           },
         });
@@ -204,6 +204,15 @@ export const PosContextProvider = ({ children }) => {
       console.error(err, 'set selected true');
     }
   };
+  const resetCount = () => {
+    try {
+      dispatch({
+        type: 'RESET_COUNT',
+      });
+    } catch (err) {
+      console.error(err, 'reset count');
+    }
+  };
 
   return (
     <PosGlobalContext.Provider
@@ -239,6 +248,7 @@ export const PosContextProvider = ({ children }) => {
         menuItemSelect: state.menuItemSelect,
         setSelectedFalse,
         setSelectedTrue,
+        resetCount,
       }}
     >
       {children}

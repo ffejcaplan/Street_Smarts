@@ -66,7 +66,7 @@ export default (state, action) => {
     case 'TRUE_REVIEW_ORDER':
       return {
         ...state,
-        itemEditKey: parseInt(action.payload),
+        itemEditKey: parseInt(action.payload) - 1,
         reviewOrder: true,
       };
     case 'UPDATE_ORDER_ITEM':

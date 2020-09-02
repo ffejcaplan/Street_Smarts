@@ -9,7 +9,6 @@ export default function MenuItems() {
     displayItem,
     falseReviewOrder,
     setSelectedTrue,
-    menuItemSelect,
   } = useContext(PosGlobalContext);
 
   //   useEffect(() => {
@@ -19,7 +18,6 @@ export default function MenuItems() {
     setSelectedTrue();
     displayItem(event);
     falseReviewOrder();
-    console.log(menuItemSelect);
   };
   return (
     <div style={{ height: '100%', width: '100%', border: '1px solid black' }}>

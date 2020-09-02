@@ -12,25 +12,33 @@ export default function OrderAndTotal() {
   //     loadCategories();
   //   }, []);
   let i = 1;
-  let j = 1;
-  let k = 1;
 
   let revisedOrder = orderItems;
 
   const reviewSelectedItem = (target) => {
     setSelectedTrue();
-    trueReviewOrder(target);
+    const editNumber = parseInt(target) + 1;
+    trueReviewOrder(editNumber);
   };
 
   const deleteItemFromOrder = (key) => {
-    let index = parseInt(key) - 1;
-    revisedOrder.splice(index, 1);
-    let newTotal = 0;
+    console.log(key);
+
+    //TODO why filter no work?
+
     revisedOrder.map((item) => {
-      newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
-      return newTotal;
+      console.log(item.key);
+      if (parseInt(item.key) === parseInt(key)) {
+        const index = revisedOrder.indexOf(item);
+        revisedOrder.splice(index, 1);
+        let newTotal = 0;
+        revisedOrder.map((item) => {
+          newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
+          return newTotal;
+        });
+        updateOrderItem(revisedOrder, newTotal);
+      }
     });
-    updateOrderItem(revisedOrder, newTotal);
   };
   return (
     <table className="table">
@@ -42,7 +50,7 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     // TODO figure out a key
-                    value={j++}
+                    value={orderItem.key}
                     className="row"
                     style={{ marginLeft: '10px' }}
                     onClick={(e) => {
@@ -58,11 +66,11 @@ export default function OrderAndTotal() {
                   {' '}
                   $
                   {parseFloat(orderItem.price) *
-                    parseFloat(orderItem.numberOfItem)}
+                    parseInt(orderItem.numberOfItem)}
                 </td>
                 <td>
                   <button
-                    value={k++}
+                    value={orderItem.key}
                     onClick={(e) => deleteItemFromOrder(e.target.value)}
                   >
                     delete
