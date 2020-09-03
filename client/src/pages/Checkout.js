@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { PosGlobalContext } from '../context/POS/PosContext';
 import Form from '../components/Checkout/MainForm';
+// test
 
 export default function Checkout() {
   const { loadCategories, loadInventory, orderTotal } = useContext(

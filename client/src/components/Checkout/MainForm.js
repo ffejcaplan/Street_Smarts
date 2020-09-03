@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Credit from './CreditCard';
 import Cash from './Cash';
-
+// test
 class Form extends Component {
   state = {
     currentComponent: 'null',

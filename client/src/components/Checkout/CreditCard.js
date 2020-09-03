@@ -9,6 +9,7 @@ import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
 import Modal from './ApprovedModal';
 // import '../App.css';
+// test
 
 function Credit() {
   // declaring state variables
