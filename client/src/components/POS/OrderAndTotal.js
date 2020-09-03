@@ -8,37 +8,19 @@ export default function OrderAndTotal() {
     setSelectedTrue,
     updateOrderItem,
   } = useContext(PosGlobalContext);
-  //   useEffect(() => {
-  //     loadCategories();
-  //   }, []);
   let i = 1;
 
   let revisedOrder = orderItems;
 
   const reviewSelectedItem = (target) => {
-    console.log(target);
     trueReviewOrder(target);
     setSelectedTrue();
-    // revisedOrder.map((item) => {
-    //   console.log(item.key);
-    //   console.log(target);
-    //   if (parseInt(item.key) === parseInt(target)) {
-    //     const index = revisedOrder.indexOf(item);
-    //     console.log(index);
-    //     trueReviewOrder(index);
-
-    //     // updateOrderItem(revisedOrder, newTotal);
-    //   }
-    // });
   };
 
   const deleteItemFromOrder = (key) => {
-    console.log(key);
-
     //TODO why filter no work?
 
     revisedOrder.map((item) => {
-      console.log(item.key);
       if (parseInt(item.key) === parseInt(key)) {
         const index = revisedOrder.indexOf(item);
         revisedOrder.splice(index, 1);

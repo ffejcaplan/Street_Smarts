@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { PosGlobalContext } from '../context/POS/PosContext';
 
 export default function Checkout() {

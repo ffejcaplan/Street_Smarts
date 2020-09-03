@@ -21,21 +21,13 @@ export default function DisplayItem() {
 
   const orderFunction = (info, numberOfItemsForOrder) => {
     const match = orderItems.filter((item) => item.itemId === info.id);
-    // const index = orderItems.findIndex((item)=>item)
+
     if (match.length > 0) {
-      // console.log(match);
-      // const matchKey = match[0].key;
-      // console.log(matchKey);
-      // console.log(revisedOrder[matchKey - 1]);
-      console.log(match[0].itemId);
-      console.log(match);
       const index = revisedOrder.findIndex(
         (item) => item.itemId === match[0].itemId
       );
-      console.log(index);
+
       revisedOrder[index].numberOfItem += parseInt(numberOfItemsForOrder);
-      // console.log(index);
-      // console.log(revisedOrder);
       let newTotal = 0;
       revisedOrder.map((item) => {
         newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);
@@ -50,7 +42,6 @@ export default function DisplayItem() {
   };
 
   const submitItem = (info, numItems) => {
-    console.log(info);
     orderFunction(info, numItems);
     setSelectedFalse();
   };

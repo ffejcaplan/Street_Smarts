@@ -113,7 +113,6 @@ export const PosContextProvider = ({ children }) => {
   };
 
   const addToOrder = async (item, count) => {
-    console.log(item);
     if (count > 0) {
       try {
         await dispatch({
@@ -217,7 +216,6 @@ export const PosContextProvider = ({ children }) => {
   return (
     <PosGlobalContext.Provider
       value={{
-        orderLatitude: state.orderLatitude,
         order: state.order,
         items: state.items,
         itemEditKey: state.itemEditKey,
