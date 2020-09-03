@@ -22,10 +22,8 @@ const initialState = {
   numberOfItemsForOrder: 1,
   reviewOrder: false,
   menuItemSelect: false,
-  // loading: true,
 };
 
-// creates context
 export const PosGlobalContext = createContext(initialState);
 export const PosContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(PosReducer, initialState);

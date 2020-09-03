@@ -16,9 +16,20 @@ export default function OrderAndTotal() {
   let revisedOrder = orderItems;
 
   const reviewSelectedItem = (target) => {
+    console.log(target);
+    trueReviewOrder(target);
     setSelectedTrue();
-    const editNumber = parseInt(target) + 1;
-    trueReviewOrder(editNumber);
+    // revisedOrder.map((item) => {
+    //   console.log(item.key);
+    //   console.log(target);
+    //   if (parseInt(item.key) === parseInt(target)) {
+    //     const index = revisedOrder.indexOf(item);
+    //     console.log(index);
+    //     trueReviewOrder(index);
+
+    //     // updateOrderItem(revisedOrder, newTotal);
+    //   }
+    // });
   };
 
   const deleteItemFromOrder = (key) => {
@@ -50,8 +61,9 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     // TODO figure out a key
+
                     value={orderItem.key}
-                    className="row"
+                    className="row btn btn-warning"
                     style={{ marginLeft: '10px' }}
                     onClick={(e) => {
                       reviewSelectedItem(e.target.value);
@@ -71,6 +83,7 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     value={orderItem.key}
+                    className="btn btn-danger"
                     onClick={(e) => deleteItemFromOrder(e.target.value)}
                   >
                     delete

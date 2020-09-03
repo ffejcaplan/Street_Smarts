@@ -24,10 +24,10 @@ export default function POS() {
         <br />
       </div>
 
-      <div className="col-sm-6">
+      <div className="col-sm-5">
         <ItemDisplay />
       </div>
-      <div className="col-sm-3" style={{ height: '100%' }}>
+      <div className="col-sm-4" style={{ height: '100%' }}>
         <OrderAndTotal />
 
         <Totals />
