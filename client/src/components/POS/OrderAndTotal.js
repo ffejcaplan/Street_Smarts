@@ -8,26 +8,19 @@ export default function OrderAndTotal() {
     setSelectedTrue,
     updateOrderItem,
   } = useContext(PosGlobalContext);
-  //   useEffect(() => {
-  //     loadCategories();
-  //   }, []);
   let i = 1;
 
   let revisedOrder = orderItems;
 
   const reviewSelectedItem = (target) => {
+    trueReviewOrder(target);
     setSelectedTrue();
-    const editNumber = parseInt(target) + 1;
-    trueReviewOrder(editNumber);
   };
 
   const deleteItemFromOrder = (key) => {
-    console.log(key);
-
     //TODO why filter no work?
 
     revisedOrder.map((item) => {
-      console.log(item.key);
       if (parseInt(item.key) === parseInt(key)) {
         const index = revisedOrder.indexOf(item);
         revisedOrder.splice(index, 1);
@@ -50,8 +43,9 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     // TODO figure out a key
+
                     value={orderItem.key}
-                    className="row"
+                    className="row btn btn-warning"
                     style={{ marginLeft: '10px' }}
                     onClick={(e) => {
                       reviewSelectedItem(e.target.value);
@@ -71,6 +65,7 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     value={orderItem.key}
+                    className="btn btn-danger"
                     onClick={(e) => deleteItemFromOrder(e.target.value)}
                   >
                     delete

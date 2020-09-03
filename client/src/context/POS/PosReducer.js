@@ -56,6 +56,7 @@ export default (state, action) => {
           const itemTotal = currentItem.numberOfItem * currentItem.price;
           return total + itemTotal;
         }, 0),
+        itemKeyIncrement: state.itemKeyIncrement + 1,
         // orderItemKey: state.orderItems.length,
       };
     case 'FALSE_REVIEW_ORDER':
@@ -66,7 +67,7 @@ export default (state, action) => {
     case 'TRUE_REVIEW_ORDER':
       return {
         ...state,
-        itemEditKey: parseInt(action.payload) - 1,
+        itemEditKey: parseInt(action.payload),
         reviewOrder: true,
       };
     case 'UPDATE_ORDER_ITEM':

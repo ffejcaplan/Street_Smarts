@@ -219,5 +219,17 @@ router.get('locations', (req, res) => {
     });
 });
 
+router.get('/sales', (req, res) => {
+  db.Orders.findAll({})
+    .then((response) => {
+      console.log(response);
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).json({ success: false });
+    });
+});
+
 // random comment
 module.exports = router;

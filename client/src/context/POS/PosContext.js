@@ -22,10 +22,9 @@ const initialState = {
   numberOfItemsForOrder: 1,
   reviewOrder: false,
   menuItemSelect: false,
-  // loading: true,
+  itemKeyIncrement: 1,
 };
 
-// creates context
 export const PosGlobalContext = createContext(initialState);
 export const PosContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(PosReducer, initialState);
@@ -119,7 +118,7 @@ export const PosContextProvider = ({ children }) => {
         await dispatch({
           type: 'ADD_TO_ORDER',
           payload: {
-            key: state.orderItems.length + 1,
+            key: state.itemKeyIncrement,
             itemName: item.itemName,
             itemId: item.id,
             price: parseFloat(item.price),
@@ -217,7 +216,6 @@ export const PosContextProvider = ({ children }) => {
   return (
     <PosGlobalContext.Provider
       value={{
-        orderLatitude: state.orderLatitude,
         order: state.order,
         items: state.items,
         itemEditKey: state.itemEditKey,
