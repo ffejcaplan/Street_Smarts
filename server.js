@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Serve static files from the React app build directory
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Express boilerplate middleware
 // =============================================
@@ -33,7 +33,7 @@ app.use('/api', routes);
 // Everything that is not an api request is sent to index.html
 // for client side routing.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 // Sync sequelize models then start Express app
