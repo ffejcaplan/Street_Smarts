@@ -56,6 +56,7 @@ export default (state, action) => {
           const itemTotal = currentItem.numberOfItem * currentItem.price;
           return total + itemTotal;
         }, 0),
+        itemKeyIncrement: state.itemKeyIncrement + 1,
         // orderItemKey: state.orderItems.length,
       };
     case 'FALSE_REVIEW_ORDER':

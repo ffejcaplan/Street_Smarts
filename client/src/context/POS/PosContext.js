@@ -22,6 +22,7 @@ const initialState = {
   numberOfItemsForOrder: 1,
   reviewOrder: false,
   menuItemSelect: false,
+  itemKeyIncrement: 1,
 };
 
 export const PosGlobalContext = createContext(initialState);
@@ -112,12 +113,13 @@ export const PosContextProvider = ({ children }) => {
   };
 
   const addToOrder = async (item, count) => {
+    console.log(item);
     if (count > 0) {
       try {
         await dispatch({
           type: 'ADD_TO_ORDER',
           payload: {
-            key: state.orderItems.length + 1,
+            key: state.itemKeyIncrement,
             itemName: item.itemName,
             itemId: item.id,
             price: parseFloat(item.price),

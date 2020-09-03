@@ -4,6 +4,7 @@ import SalesReducer from './SalesReducer';
 
 const initalState = {
   sales: [],
+  byLocation: [],
 };
 
 export const SalesGlobalContext = createContext(initalState);
@@ -23,7 +24,15 @@ export const SalesAndReportsContextProvider = ({ children }) => {
   };
 
   const loadByLocation = async () => {
-    const result = await ReportsAPI.loadByLocation();
+    try {
+      const result = await ReportsAPI.loadByLocation();
+      dispatch({
+        type: 'LOAD_BY_LOCATION',
+        payload: result,
+      });
+    } catch (err) {
+      console.err0r(err, 'load by location');
+    }
   };
 
   return (
