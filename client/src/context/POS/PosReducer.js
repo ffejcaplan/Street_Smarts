@@ -95,6 +95,12 @@ export default (state, action) => {
         ...state,
         menuItemSelect: true,
       };
+
+    case 'SET_CHECKOUT':
+      return {
+        ...state,
+        checkout: action.payload,
+      };
     // return {
     //   ...state,
     //   orderTotal: newTotal,

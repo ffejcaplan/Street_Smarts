@@ -23,6 +23,7 @@ const initialState = {
   reviewOrder: false,
   menuItemSelect: false,
   itemKeyIncrement: 1,
+  checkout: false,
 };
 
 export const PosGlobalContext = createContext(initialState);
@@ -213,6 +214,28 @@ export const PosContextProvider = ({ children }) => {
     }
   };
 
+  const setCheckoutTrue = () => {
+    try {
+      dispatch({
+        type: 'SET_CHECKOUT',
+        payload: true,
+      });
+    } catch (err) {
+      console.error(err, 'set checkout true');
+    }
+  };
+
+  const setCheckoutFalse = () => {
+    try {
+      dispatch({
+        type: 'SET_CHECKOUT',
+        payload: false,
+      });
+    } catch (err) {
+      console.error(err, 'set checkout false');
+    }
+  };
+
   return (
     <PosGlobalContext.Provider
       value={{
@@ -247,6 +270,9 @@ export const PosContextProvider = ({ children }) => {
         setSelectedFalse,
         setSelectedTrue,
         resetCount,
+        setCheckoutTrue,
+        setCheckoutFalse,
+        checkout: state.checkout,
       }}
     >
       {children}

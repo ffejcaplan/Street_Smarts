@@ -10,12 +10,12 @@ export default function Totals() {
     <div style={{ position: 'fixed', bottom: 0 }}>
       <br />
       <br />
-      <p style={{ marginLeft: '10px' }}>Total: ${orderTotal.toFixed(2)}</p>
+      <p style={{ marginLeft: '10px' }}>Subtotal: ${orderTotal.toFixed(2)}</p>
       <p style={{ marginLeft: '10px' }}>
         Tax: ${(orderTotal * 0.08).toFixed(2)}
       </p>
       <p style={{ marginLeft: '10px' }}>
-        Tax: ${(orderTotal * 1.08).toFixed(2)}
+        Total: ${(orderTotal * 1.08).toFixed(2)}
       </p>
 
       <SubmitOrderButton />
