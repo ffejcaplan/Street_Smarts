@@ -13,7 +13,7 @@ INSERT INTO Inventories (itemName, description, price, active, category) VALUE (
 INSERT INTO Inventories (itemName, description, price, active, category) VALUE ('Cake', 'everybody loves cake', 5.99, true, 5);
 
 
-INSERT INTO Locations (latitude, longitude, nickname, active) VALUE (43.624693, -70.301653, 'Ffejs House', 0);
+
 
 INSERT INTO Orders (date, time, total, customer, payment_method, locationId) VALUE ("1984-12-22","23:59:59", 55.93, "Ffej", 'cash', 1);
 INSERT INTO Orders (date, time, total, customer, payment_method, locationId) VALUE ("1984-12-22","23:59:59", 35.96, "Sam", 'cash', 2);
