@@ -5,10 +5,14 @@ import PinLocation from './pages/PinLocation';
 import Reports from './pages/Reports';
 import Navbar from './components/Navbar';
 import Checkout from './pages/Checkout';
+import Landing from './pages/Landing';
 import { PosContextProvider } from './context/POS/PosContext';
 import { LocationsContextProvider } from './context/Location/LocationsContext';
 import { SalesAndReportsContextProvider } from './context/SalesAndReports/SalesAndReportsContext';
 export default function App() {
+  if(window.location.href === 'http://localhost:3000/'){
+    return (<Landing />)
+  } else{
   return (
     <>
       <LocationsContextProvider>
@@ -16,12 +20,7 @@ export default function App() {
           <>
             <Navbar />
             <Switch>
-              <Route exact path="/">
-                <PosContextProvider>
-                  <POS />
-                </PosContextProvider>
-              </Route>
-
+            
               <Route exact path="/pos">
                 <PosContextProvider>
                   <POS />
@@ -43,10 +42,12 @@ export default function App() {
                   <Checkout />
                 </PosContextProvider>
               </Route>
+
             </Switch>
           </>
         </Router>
       </LocationsContextProvider>
     </>
   );
+  }
 }

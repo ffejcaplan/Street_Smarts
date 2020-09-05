@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Credit from './CreditCard';
 import Cash from './Cash';
+import Totals from '../POS/Totals';
+import '../../App.css';
 
 class Form extends Component {
   state = {
@@ -71,6 +73,7 @@ class Form extends Component {
                 </div>{' '}
                 {this.RenderComponent()}
               </div>
+              {/* <Totals /> */}
             </div>
           </div>
         </div>

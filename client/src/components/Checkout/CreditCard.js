@@ -8,7 +8,7 @@ import 'react-credit-cards/es/styles-compiled.css';
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
 import Modal from './ApprovedModal';
-// import '../App.css';
+import '../../App.css';
 
 function Credit() {
   // declaring state variables
@@ -30,7 +30,7 @@ function Credit() {
 
   return (
     // defining the form that collects credit card values in JSX
-    <div className="Form">
+    <div className="Forms">
       <br />
       <Cards
         number={number}

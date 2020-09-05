@@ -5,7 +5,7 @@ import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
 import Modal from './ApprovedModal';
 
-// import '../../App.css';
+import '../../App.css';
 // importing react-number-format
 // import NumberFormat from 'react-number-format';
 
@@ -16,7 +16,7 @@ function Cash() {
   // amount calculated input (result)
   const [currentSum, setCurrentSum] = useState('');
   // amount received input
-  const [received, setReceived] = useState('0.00');
+  const [received, setReceived] = useState('');
   // clear function
   const [clear, setClear] = useState('');
 
@@ -55,7 +55,7 @@ function Cash() {
   };
 
   return (
-    <div className="Form">
+    <div className="Forms">
       <br />
       <MDBRow>
         <MDBCol md="12" sm="12" xs="12">
@@ -85,7 +85,6 @@ function Cash() {
                 onChange={(event) => setDue(event.target.value)}
                 style={inputStyle}
                 size="lg"
-                pattern="^\d+(\.|\,)\d{2}$"
                 min="0.00"
                 step="0.01"
                 max="1000"
@@ -124,13 +123,15 @@ function Cash() {
             readOnly
           />
           <br />
-          <MDBBtn gradient="blue" onClick={Calculate}>
-            Calculate
-          </MDBBtn>
-          <MDBBtn gradient="blue" onClick={Clear}>
-            Clear
-          </MDBBtn>
-          <Modal />
+          <MDBRow>
+            <MDBBtn gradient="blue" onClick={Calculate}>
+              Calculate
+            </MDBBtn>
+            <MDBBtn gradient="blue" onClick={Clear}>
+              Clear
+            </MDBBtn>
+            <Modal />
+          </MDBRow>
         </MDBContainer>
       </form>
     </div>
