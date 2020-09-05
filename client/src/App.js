@@ -8,7 +8,7 @@ import Checkout from './pages/Checkout';
 import Landing from './pages/Landing';
 import { PosContextProvider } from './context/POS/PosContext';
 import { LocationsContextProvider } from './context/Location/LocationsContext';
-
+import { SalesAndReportsContextProvider } from './context/SalesAndReports/SalesAndReportsContext';
 export default function App() {
   if(window.location.href === 'http://localhost:3000/'){
     return (<Landing />)
@@ -28,7 +28,9 @@ export default function App() {
               </Route>
 
               <Route exact path="/reports">
-                <Reports />
+                <SalesAndReportsContextProvider>
+                  <Reports />
+                </SalesAndReportsContextProvider>
               </Route>
 
               <Route exact path="/pin">

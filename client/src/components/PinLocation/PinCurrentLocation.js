@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import BackButton from './BackButton';

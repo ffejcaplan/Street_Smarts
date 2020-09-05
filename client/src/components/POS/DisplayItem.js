@@ -21,13 +21,13 @@ export default function DisplayItem() {
 
   const orderFunction = (info, numberOfItemsForOrder) => {
     const match = orderItems.filter((item) => item.itemId === info.id);
-    if (match.length > 0) {
-      const matchKey = match[0].key;
 
-      revisedOrder[matchKey - 1].numberOfItem += parseInt(
-        numberOfItemsForOrder
+    if (match.length > 0) {
+      const index = revisedOrder.findIndex(
+        (item) => item.itemId === match[0].itemId
       );
-      console.log(revisedOrder);
+
+      revisedOrder[index].numberOfItem += parseInt(numberOfItemsForOrder);
       let newTotal = 0;
       revisedOrder.map((item) => {
         newTotal += parseFloat(item.price) * parseFloat(item.numberOfItem);

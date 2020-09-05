@@ -5,11 +5,15 @@ import Categories from '../components/POS/Categories';
 import ItemDisplay from '../components/POS/ItemDisplay';
 import OrderAndTotal from '../components/POS/OrderAndTotal';
 import Totals from '../components/POS/Totals';
+import Checkout from '../pages/Checkout';
 
 export default function POS() {
-  const { loadCategories, loadInventory, getCurrentLocation } = useContext(
-    PosGlobalContext
-  );
+  const {
+    loadCategories,
+    loadInventory,
+    getCurrentLocation,
+    checkout,
+  } = useContext(PosGlobalContext);
 
   useEffect(() => {
     loadCategories();
@@ -17,21 +21,25 @@ export default function POS() {
     getCurrentLocation();
   }, []);
 
-  return (
-    <div className="row" style={{ height: '100%' }}>
-      <div className="col-sm-3">
-        <Categories />
-        <br />
-      </div>
+  if (checkout === true) {
+    return <Checkout />;
+  }
+  if (checkout === false)
+    return (
+      <div className="row" style={{ height: '100%' }}>
+        <div className="col-sm-3">
+          <Categories />
+          <br />
+        </div>
 
-      <div className="col-sm-6">
-        <ItemDisplay />
-      </div>
-      <div className="col-sm-3" style={{ height: '100%' }}>
-        <OrderAndTotal />
+        <div className="col-sm-5">
+          <ItemDisplay />
+        </div>
+        <div className="col-sm-4" style={{ height: '100%' }}>
+          <OrderAndTotal />
 
-        <Totals />
+          <Totals />
+        </div>
       </div>
-    </div>
-  );
+    );
 }

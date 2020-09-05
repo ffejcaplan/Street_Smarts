@@ -44,7 +44,14 @@ export default function OrderItemReview() {
   const addUpdatedToOrder = (key, value) => {
     //if value ===0 delete target from order items
     if (value === 0) {
-      let index = parseInt(key) - 1;
+      console.log(key);
+      console.log(value);
+      console.log(revisedOrder);
+
+      const index = revisedOrder.findIndex(
+        (item) => parseInt(item.itemId) === parseInt(key)
+      );
+
       revisedOrder.splice(index, 1);
       let newTotal = 0;
       revisedOrder.map((item) => {
@@ -83,7 +90,7 @@ export default function OrderItemReview() {
                   </button>
                   <button
                     className="btn btn-primary"
-                    value={info.key}
+                    value={info.itemId}
                     style={{ border: '1px solid white' }}
                     onClick={(e) => {
                       addUpdatedToOrder(e.target.value, info.numberOfItem);
