@@ -9,7 +9,6 @@ import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import { PosGlobalContext } from '../../context/POS/PosContext';
 import Modal from './ApprovedModal';
 
-
 import '../../App.css';
 // importing react-number-format
 // import NumberFormat from 'react-number-format';
@@ -90,7 +89,6 @@ function Cash() {
       <form className="Forms">
         {/* input 1 = Amt Due */}
         <MDBContainer>
-
           <MDBRow>
             <MDBCol>
               <MDBInput
