@@ -1,8 +1,9 @@
 // need state variables to keep track of user input
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 // importing material UI components
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
+import { PosGlobalContext } from '../../context/POS/PosContext';
 import Modal from './ApprovedModal';
 
 import '../../App.css';
@@ -10,6 +11,7 @@ import '../../App.css';
 // import NumberFormat from 'react-number-format';
 
 function Cash() {
+  const { orderTotalWithTax } = useContext(PosGlobalContext);
   // declaring state variables
   // amount due input
   const [due, setDue] = useState('');
@@ -81,7 +83,7 @@ function Cash() {
                 id="due"
                 type="number"
                 name="due"
-                value={due}
+                value={orderTotalWithTax}
                 onChange={(event) => setDue(event.target.value)}
                 style={inputStyle}
                 size="lg"

@@ -8,6 +8,7 @@ const initialState = {
   selected: false,
   newLocation: false,
   pinned: false,
+  pinnedStatus: '',
 };
 
 export const LocationGlobalContext = createContext(initialState);
@@ -89,6 +90,27 @@ export const LocationsContextProvider = ({ children }) => {
     }
   };
 
+  const pinnedStatusCheck = async () => {
+    try {
+      const pinned = await LocationsAPI.findActive();
+
+      if (pinned.data.length > 0) {
+        dispatch({
+          type: 'PINNED_STATUS',
+          payload: true,
+        });
+      } else {
+        console.log('unpinned');
+        dispatch({
+          type: 'PINNED_STATUS',
+          payload: false,
+        });
+      }
+    } catch (err) {
+      console.error(err, 'pinned status');
+    }
+  };
+
   const togglePin = async () => {
     try {
       dispatch({
@@ -129,6 +151,8 @@ export const LocationsContextProvider = ({ children }) => {
         postLocation,
         setActive,
         resetPin,
+        pinnedStatus: state.pinnedStatus,
+        pinnedStatusCheck,
       }}
     >
       {children}

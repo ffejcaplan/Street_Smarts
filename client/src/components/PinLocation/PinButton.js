@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
 
 export default function PinButton() {
-  const { pinned, resetPin } = useContext(LocationGlobalContext);
+  const {
+    pinned,
+    resetPin,
+    pinnedStatusCheck,
+    pinnedStatus,
+    togglePin,
+  } = useContext(LocationGlobalContext);
 
   if (pinned === true) {
     return (

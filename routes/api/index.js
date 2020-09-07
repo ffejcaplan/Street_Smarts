@@ -158,6 +158,19 @@ router.post('/postorderlocation', (req, res) => {
     });
 });
 
+router.get('/activelocations', (req, res) => {
+  console.log('wassup?');
+  db.Locations.findAll({ where: { active: true } })
+    .then((response) => {
+      console.log('hello world');
+      res.status(200).json(response);
+    })
+    .catch((err) => {
+      res.status(400).json({ succes: false });
+      console.error(err);
+    });
+});
+
 router.post('/locations', (req, res) => {
   db.Locations.update({ active: false }, { where: { active: true } }).then(
     () => {

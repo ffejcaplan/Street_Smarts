@@ -9,19 +9,22 @@ import Contact from '../components/Landing/Contact';
 import Footer from '../components/Landing/Footer';
 import Map from '../components/Landing/Map-Customer';
 import Demo from '../components/Landing/Demo';
+import { LocationsContextProvider } from '../context/Location/LocationsContext';
+
 // import Form from '../components/Checkout/MainForm';
 
 export default function Landing() {
-
   return (
-    <div className="App" id="page-top">
-      <Main />
-      <Services />
-      <Map />
-      <Portfolio />
-      <Team />
-      <Contact />
-      {/* <Footer />     */}
-    </div>
+    <LocationsContextProvider>
+      <div className="App" id="page-top">
+        <Main />
+        <Services />
+        <Map />
+        <Portfolio />
+        <Team />
+        <Contact />
+        {/* <Footer />     */}
+      </div>
+    </LocationsContextProvider>
   );
 }

@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Credit from './CreditCard';
 import Cash from './Cash';
 import Totals from '../POS/Totals';
+
 import '../../App.css';
 
 class Form extends Component {
@@ -24,6 +25,7 @@ class Form extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="container py-5">
         {/* For demo purpose */}
@@ -32,6 +34,11 @@ class Form extends Component {
             <h1 className="display-4">Street Smarts Payment</h1>
           </div>
         </div>
+
+        {/* TOTAL DUE! */}
+        <div>Total Due: ${this.props.total}</div>
+        {/* TOTAL DUE! */}
+
         {/* End */}
         <div className="row">
           <div className="col-lg-6 mx-auto">
