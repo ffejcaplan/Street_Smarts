@@ -1,72 +1,58 @@
 import React from 'react';
 import '../../App.css';
+import MySQL from '../../assets/img/mysql.jpg';
+import Express from '../../assets/img/express.png';
+import ReactJS from '../../assets/img/react.jpg';
+import Node from '../../assets/img/node.png';
+import Mapbox from '../../assets/img/mapbox.png';
+import Bootstrap from '../../assets/img/bootstrap.jpg';
 
 function Portfolio() {
-  const portfolioLinks = [
-    {
-      title: 'Threads',
-      caption: 'Illustration',
-    },
-    {
-      title: 'Explore',
-      caption: 'Graphic Design',
-    },
-    {
-      title: 'Finish',
-      caption: 'Identity',
-    },
-    {
-      title: 'Lines',
-      caption: 'Branding',
-    },
-    {
-      title: 'Southwest',
-      caption: 'Website Design',
-    },
-    {
-      title: 'Window',
-      caption: 'Photography',
-    },
-  ];
   return (
-    <section className="bg-light page-section" id="portfolio">
+    <section className="page-section" id="portfolio">
       <div className="container">
         <div className="row">
           <div className="col-lg-12 text-center">
             <h2 className="section-heading text-uppercase">Technology</h2>
-            <h3 className="section-subheading text-muted">
-              {/* Lorem ipsum dolor sit amet consectetur. */}
-            </h3>
           </div>
         </div>
         <div className="row">
-          {portfolioLinks &&
-            portfolioLinks.map(({ title, caption }, index) => (
-              <div className="col-md-4 col-sm-6 portfolio-item">
-                <a
-                  className="portfolio-link"
-                  data-toggle="modal"
-                  href="#portfolioModal1"
-                >
-                  <div className="portfolio-hover">
-                    <div className="portfolio-hover-content">
-                      <i className="fa fa-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  <img
-                    className="img-fluid"
-                    src={`https://unsplash.it/350/140/?${Math.floor(
-                      Math.random(0, 100) * 100
-                    )}`}
-                    alt="portfolio_img"
-                  />
-                </a>
-                <div className="portfolio-caption">
-                  <h4>{title}</h4>
-                  <p className="text-muted">{caption}</p>
-                </div>
-              </div>
-            ))}
+          <div className="col-md-4 col-sm-6 portfolio-item">
+            <img className="img-fluid" src={MySQL} alt="mapbox logo" />
+            <div className="portfolio-caption">
+              <h4>MySQL</h4>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6 portfolio-item">
+            <img className="img-fluid" src={Express} alt="mapbox logo" />
+            <div className="portfolio-caption">
+              <h4>Express.js</h4>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6 portfolio-item">
+            <img className="img-fluid" src={ReactJS} alt="mapbox logo" />
+            <div className="portfolio-caption">
+              <h4>React.js</h4>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6 portfolio-item">
+            <img className="img-fluid" src={Node} alt="mapbox logo" />
+            <div className="portfolio-caption">
+              <h4>Node.js</h4>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6 portfolio-item">
+            <img className="img-fluid" src={Mapbox} alt="mapbox logo" />
+            <div className="portfolio-caption">
+              <h4>Mapbox</h4>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6 portfolio-item">
+            <img className="img-fluid" src={Bootstrap} alt="mapbox logo" />
+            <div className="portfolio-caption">
+              <h4>Bootstrap</h4>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -30,7 +30,7 @@ function Credit() {
 
   return (
     // defining the form that collects credit card values in JSX
-    <div className="Forms">
+    <div>
       <br />
       <Cards
         number={number}
@@ -40,26 +40,21 @@ function Credit() {
         focused={focus}
         style={inputStyle}
       />
-      <form>
+      <form className="Forms">
         {/* input 1 = card number */}
         <MDBContainer>
-          <MDBRow>
-            <MDBCol>
-              <MDBInput
-                label="Card Number"
-                type="tel"
-                name="number"
-                // placeholder="Card Number"
-                value={number}
-                onChange={(event) => setNumber(event.target.value)}
-                onFocus={(event) => setFocus(event.target.name)}
-                style={inputStyle}
-                size="lg"
-                maxLength="16"
-              />
-            </MDBCol>
-          </MDBRow>
-          <br />
+          <MDBInput
+            label="Card Number"
+            type="tel"
+            name="number"
+            // placeholder="Card Number"
+            value={number}
+            onChange={(event) => setNumber(event.target.value)}
+            onFocus={(event) => setFocus(event.target.name)}
+            style={inputStyle}
+            size="lg"
+            maxLength="16"
+          />
           {/* input 2 = card holder name */}
           <MDBInput
             label="Cardholder Name"
@@ -73,7 +68,6 @@ function Credit() {
             size="lg"
             maxLength="36"
           />
-          <br />
           {/* input 3 = card expiration date */}
           <MDBInput
             label="MM/YY Exp"
@@ -87,7 +81,6 @@ function Credit() {
             size="lg"
             maxLength="5"
           />
-          <br />
           {/* input 4 = 3 digit cvc number */}
           <MDBInput
             label="CVC Number"

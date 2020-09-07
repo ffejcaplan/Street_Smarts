@@ -1,9 +1,11 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable jsx-a11y/alt-text */
 // need state variables to keep track of user input
 import React, { useState, useEffect } from 'react';
 // importing material UI components
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
-import Modal from './ApprovedModal';
+import Modals from './ApprovedModal';
 
 import '../../App.css';
 // importing react-number-format
@@ -20,6 +22,15 @@ function Cash() {
   // clear function
   const [clear, setClear] = useState('');
 
+  // const submitHandler = (event) => {
+  //   event.preventDefault();
+  //   event.target.className += " was-validated";
+  // };
+
+  // const changeHandler = (event) => {
+  //   this.setValidation({ [event.target.name]: event.target.value });
+  // };
+
   const inputStyle = {
     marginTop: '2em',
     width: '20em',
@@ -29,6 +40,7 @@ function Cash() {
     setCurrentSum('');
   }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (clear) setCurrentSum('');
   });
@@ -40,7 +52,7 @@ function Cash() {
     console.log(parseInt(amtDue));
     let amtRec = parseFloat(received).toFixed(2);
     console.log(parseInt(amtRec));
-    if (amtDue == '') return;
+    if (amtDue === '') return;
     let sum = parseFloat(amtDue - amtRec).toFixed(2);
     console.log(sum);
     setCurrentSum(sum);
@@ -55,7 +67,7 @@ function Cash() {
   };
 
   return (
-    <div className="Forms">
+    <div>
       <br />
       <MDBRow>
         <MDBCol md="12" sm="12" xs="12">
@@ -71,27 +83,22 @@ function Cash() {
           />
         </MDBCol>
       </MDBRow>
-      <form>
+      <form className="Forms">
         {/* input 1 = Amt Due */}
         <MDBContainer>
-          <MDBRow>
-            <MDBCol>
-              <MDBInput
-                label="Amount Due"
-                id="due"
-                type="number"
-                name="due"
-                value={due}
-                onChange={(event) => setDue(event.target.value)}
-                style={inputStyle}
-                size="lg"
-                min="0.00"
-                step="0.01"
-                max="1000"
-              />
-            </MDBCol>
-          </MDBRow>
-          <br />
+          <MDBInput
+            label="Amount Due"
+            id="due"
+            type="number"
+            name="due"
+            value={due}
+            onChange={(event) => setDue(event.target.value)}
+            style={inputStyle}
+            size="lg"
+            min="0.00"
+            step="0.01"
+            max="1000"
+          />
           {/* input 2 = Amt Received */}
           <MDBInput
             label="Amount Received"
@@ -106,7 +113,6 @@ function Cash() {
             step="0.01"
             max="1000"
           />
-          <br />
           {/* input 3 = Return Amt */}
           <MDBInput
             label="Return Amount"
@@ -130,7 +136,7 @@ function Cash() {
             <MDBBtn gradient="blue" onClick={Clear}>
               Clear
             </MDBBtn>
-            <Modal />
+            <Modals onSubmit={Clear} />
           </MDBRow>
         </MDBContainer>
       </form>
