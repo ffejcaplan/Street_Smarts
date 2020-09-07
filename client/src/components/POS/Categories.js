@@ -20,7 +20,7 @@ export default function Categories() {
   };
 
   return (
-    <div style={{ border: '2px solid black', padding: '0px' }}>
+    <div style={{ padding: '0px' }}>
       {categories &&
         categories.map((category) => {
           return (

@@ -40,6 +40,11 @@ export default (state, action) => {
         ...state,
         pinned: false,
       };
+    case 'PINNED_STATUS':
+      return {
+        ...state,
+        pinnedStatus: action.payload,
+      };
 
     default:
       return state;

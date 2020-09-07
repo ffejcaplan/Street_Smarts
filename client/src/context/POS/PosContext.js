@@ -4,6 +4,8 @@ import API from '../../utils/API';
 
 const initialState = {
   orderTotal: 0,
+  orderTax: 0,
+  orderTotalWithTax: 0,
   orderCustomer: '',
   orderPayment_method: '',
   orderLocationId: null,
@@ -214,25 +216,24 @@ export const PosContextProvider = ({ children }) => {
     }
   };
 
-  const setCheckoutTrue = () => {
+  const setCheckout = (value) => {
     try {
       dispatch({
         type: 'SET_CHECKOUT',
-        payload: true,
+        payload: value,
       });
     } catch (err) {
       console.error(err, 'set checkout true');
     }
   };
 
-  const setCheckoutFalse = () => {
+  const setTotals = () => {
     try {
       dispatch({
-        type: 'SET_CHECKOUT',
-        payload: false,
+        type: 'SET_TOTALS',
       });
     } catch (err) {
-      console.error(err, 'set checkout false');
+      console.error(err, 'set totals');
     }
   };
 
@@ -270,9 +271,11 @@ export const PosContextProvider = ({ children }) => {
         setSelectedFalse,
         setSelectedTrue,
         resetCount,
-        setCheckoutTrue,
-        setCheckoutFalse,
+        setCheckout,
         checkout: state.checkout,
+        setTotals,
+        orderTax: state.orderTax,
+        orderTotalWithTax: state.orderTotalWithTax,
       }}
     >
       {children}

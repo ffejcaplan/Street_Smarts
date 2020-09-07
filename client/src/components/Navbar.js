@@ -7,7 +7,6 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        {/* <Link to="/">Navbar</Link> */}
         <button
           className="navbar-toggler"
           type="button"

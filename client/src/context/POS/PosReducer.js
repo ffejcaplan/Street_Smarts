@@ -101,6 +101,12 @@ export default (state, action) => {
         ...state,
         checkout: action.payload,
       };
+    case 'SET_TOTALS':
+      return {
+        ...state,
+        orderTax: (state.orderTotal * 0.08).toFixed(2),
+        orderTotalWithTax: (state.orderTotal * 1.08).toFixed(2),
+      };
     // return {
     //   ...state,
     //   orderTotal: newTotal,

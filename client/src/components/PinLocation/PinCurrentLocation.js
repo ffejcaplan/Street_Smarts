@@ -4,7 +4,7 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import BackButton from './BackButton';
 import LocationNickname from './LocationNickname';
 
-export default function PinCurrentLocation(props) {
+export default function PinCurrentLocation() {
   const { currentLocation } = useContext(LocationGlobalContext);
 
   //   useEffect(() => {

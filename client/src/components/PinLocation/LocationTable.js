@@ -9,6 +9,7 @@ export default function LocationTable() {
     setActive,
     backPinLocation,
     togglePin,
+    pinnedStatusCheck,
   } = useContext(LocationGlobalContext);
 
   useEffect(() => {

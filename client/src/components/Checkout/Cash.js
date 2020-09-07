@@ -1,17 +1,21 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable jsx-a11y/alt-text */
 // need state variables to keep track of user input
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 // importing material UI components
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
-import Modals from './ApprovedModal';
+
+import { PosGlobalContext } from '../../context/POS/PosContext';
+import Modal from './ApprovedModal';
+
 
 import '../../App.css';
 // importing react-number-format
 // import NumberFormat from 'react-number-format';
 
 function Cash() {
+  const { orderTotalWithTax } = useContext(PosGlobalContext);
   // declaring state variables
   // amount due input
   const [due, setDue] = useState('');
@@ -86,19 +90,26 @@ function Cash() {
       <form className="Forms">
         {/* input 1 = Amt Due */}
         <MDBContainer>
-          <MDBInput
-            label="Amount Due"
-            id="due"
-            type="number"
-            name="due"
-            value={due}
-            onChange={(event) => setDue(event.target.value)}
-            style={inputStyle}
-            size="lg"
-            min="0.00"
-            step="0.01"
-            max="1000"
-          />
+
+          <MDBRow>
+            <MDBCol>
+              <MDBInput
+                label="Amount Due"
+                id="due"
+                type="number"
+                name="due"
+                value={orderTotalWithTax}
+                onChange={(event) => setDue(event.target.value)}
+                style={inputStyle}
+                size="lg"
+                min="0.00"
+                step="0.01"
+                max="1000"
+              />
+            </MDBCol>
+          </MDBRow>
+          <br />
+
           {/* input 2 = Amt Received */}
           <MDBInput
             label="Amount Received"

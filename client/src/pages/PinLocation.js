@@ -10,6 +10,9 @@ export default function PinLocation() {
     currentLocation,
     selected,
     newLocation,
+    pinnedStatusCheck,
+    togglePin,
+    pinnedStatus,
   } = useContext(LocationGlobalContext);
 
   const getLocation = () => {
@@ -29,11 +32,25 @@ export default function PinLocation() {
       height: '50vh',
     });
   };
+  const runStart = async () => {
+    await pinnedStatusCheck();
+    if (pinnedStatus === true) {
+      togglePin();
+      console.log(pinnedStatus);
+    } else {
+      console.log('not so true');
+    }
+  };
 
   useEffect(() => {
     getLocation();
+    // pinnedStatusCheck();
+    // if (pinnedStatus == true) {
+    //   togglePin();
+    //   console.log('this shit is true');
+    // }
+    runStart();
   }, []);
-  console.log(currentLocation);
 
   if (selected === false && newLocation === false) {
     return <CurrentOrSaved />;

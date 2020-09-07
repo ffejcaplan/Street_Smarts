@@ -13,4 +13,7 @@ export default {
   resetPin: function () {
     return axios.put('/api/resetpin');
   },
+  findActive: function () {
+    return axios.get('/api/activelocations');
+  },
 };
