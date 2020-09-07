@@ -32,11 +32,11 @@ function Nav() {
                 Map
               </a>
             </li>
-            {/* <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#about">
-                About
+            <li className="nav-item">
+              <a className="nav-link js-scroll-trigger" href="#portfolio">
+                Tech
               </a>
-            </li> */}
+            </li>
             <li className="nav-item">
               <a className="nav-link js-scroll-trigger" href="#team">
                 Team

@@ -3,7 +3,10 @@ import Credit from './CreditCard';
 import Cash from './Cash';
 import Totals from '../POS/Totals';
 
-import '../../App.css';
+import { Nav } from 'react-bootstrap';
+
+// import Totals from '../POS/Totals';
+// import '../../App.css';
 
 class Form extends Component {
   state = {
@@ -31,7 +34,9 @@ class Form extends Component {
         {/* For demo purpose */}
         <div className="row mb-4">
           <div className="col-lg-8 mx-auto text-center">
-            <h1 className="display-4">Street Smarts Payment</h1>
+            <h1 className="display-4" style={{ fontSize: '36px' }}>
+              Street Smarts Payment
+            </h1>
           </div>
         </div>
 
@@ -46,38 +51,41 @@ class Form extends Component {
               <div className="card-header">
                 <div className="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                   {/* form tabs */}
-                  <ul
-                    role="tablist"
-                    className="nav bg-light nav-pills rounded nav-fill mb-3"
-                  >
-                    <li className="nav-item">
-                      <a
-                        data-toggle="pill"
-                        href="#credit-card"
-                        // className="nav-link"
-                        onClick={() =>
-                          this.handleComponentChange('credit-card')
-                        }
-                        className={
-                          this.state.currentComponent === 'credit-card'
-                        }
-                      >
-                        Credit Card Payment
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        data-toggle="pill"
-                        href="#cash"
-                        // className="nav-link"
-                        onClick={() => this.handleComponentChange('cash')}
-                        className={this.currentComponent === 'cash'}
-                      >
-                        Cash Payment
-                      </a>
-                    </li>
-                  </ul>
-                </div>{' '}
+                  <Nav variant="pills">
+                    <ul
+                      role="tablist"
+                      className="nav bg-light nav-pills rounded nav-fill mb-3 col-12 p-1"
+                    >
+                      <li className="nav-item">
+                        <Nav.Link
+                          eventKey="link-1"
+                          data-toggle="pill"
+                          href="#credit-card"
+                          onClick={() =>
+                            this.handleComponentChange('credit-card')
+                          }
+                          className={
+                            this.state.currentComponent === 'credit-card'
+                          }
+                        >
+                          Credit Card Payment
+                        </Nav.Link>
+                      </li>
+                      <li className="nav-item">
+                        <Nav.Link
+                          eventKey="link-2"
+                          data-toggle="pill"
+                          href="#cash"
+                          // className="nav-link"
+                          onClick={() => this.handleComponentChange('cash')}
+                          className={this.currentComponent === 'cash'}
+                        >
+                          Cash Payment
+                        </Nav.Link>
+                      </li>
+                    </ul>
+                  </Nav>
+                </div>
                 {this.RenderComponent()}
               </div>
               {/* <Totals /> */}

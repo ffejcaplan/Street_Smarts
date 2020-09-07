@@ -28,7 +28,7 @@ const MyTitleMessage = styled.h1`
       position: absolute;
       width: 100%;
       text-align: center;
-      //   z-index: 1;
+      // z-index: 1;
       margin-top: -100px;
       top: 22rem;
       left: 1rem;
@@ -38,6 +38,8 @@ const MyTitleMessage = styled.h1`
 
 const TitleMessage = () => (
   <MyTitleMessage>
+    <br />
+    <br />
     <div className="titleMessage">
       <div className="heading">
         {/* <div className="main text-center mb-3">
@@ -48,6 +50,7 @@ const TitleMessage = () => (
           </span>
         </div> */}
         <div className="sub">
+          <br />
           <Typewriter
             options={{
               strings: ['Street', 'Smarts', 'Street Smarts!'],

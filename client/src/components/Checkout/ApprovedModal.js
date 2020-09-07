@@ -1,47 +1,40 @@
 import React from 'react';
 import { MDBBtn } from 'mdbreact';
 import '../../App.css';
+import { Modal } from 'react-bootstrap';
 
-function Modal() {
+function MyVerticallyCenteredModal(props) {
   return (
-    <div>
-      <MDBBtn
-        data-toggle="modal"
-        data-target="#centralModalSuccess"
-        gradient="blue"
-      >
-        Submit
-      </MDBBtn>
-
-      {/* <!-- Central Modal Medium Success --> */}
-      <div
-        class="modal fade"
-        id="centralModalSuccess"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
-      >
-        <div
-          class="modal-dialog-centered modal-notify modal-success"
-          role="document"
-        >
-          {/* <!--Content--> */}
-          <div class="modal-content">
-            <div class="modal-footer justify-content-center">
-              <a
-                type="button"
-                class="btn btn-outline-success waves-effect"
-                data-dismiss="modal"
-              >
-                Payment Posted Successfully
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Body className="text-center">
+        <MDBBtn gradient="success" onClick={props.onHide}>
+          Payment Posted Successfully
+        </MDBBtn>
+      </Modal.Body>
+    </Modal>
   );
 }
 
-export default Modal;
+function Modals() {
+  const [modalShow, setModalShow] = React.useState(false);
+
+  return (
+    <>
+      <MDBBtn gradient="blue" onClick={() => setModalShow(true)}>
+        Process
+      </MDBBtn>
+
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
+  );
+}
+
+export default Modals;
