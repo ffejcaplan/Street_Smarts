@@ -4,6 +4,9 @@ import '../../App.css';
 function Contact() {
   return (
     <section className="page-section" id="contact">
+      <br />
+      <br />
+      <br />
       <div className="container" id="contacts">
         <div className="row">
           <div className="col-lg-12 text-center">
