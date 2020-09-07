@@ -3,12 +3,11 @@ import '../../App.css';
 import TitleMessage from './TitleMessage';
 import Nav from './Navbar';
 
-
 function Main() {
   return (
     <header className="masthead">
       <div className="container">
-          <Nav/>
+        <Nav />
         <div className="intro-text">
           <TitleMessage />
           <div className="intro-heading text-uppercase"></div>
