@@ -5,12 +5,9 @@ import React, { useState, useEffect, useContext } from 'react';
 // importing material UI components
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
-<<<<<<< HEAD
+
 import { PosGlobalContext } from '../../context/POS/PosContext';
 import Modal from './ApprovedModal';
-=======
-import Modals from './ApprovedModal';
->>>>>>> 5e9a925e00e036dc69bcc50d0a9c338b66133ca3
 
 import '../../App.css';
 // importing react-number-format
@@ -92,7 +89,6 @@ function Cash() {
       <form className="Forms">
         {/* input 1 = Amt Due */}
         <MDBContainer>
-<<<<<<< HEAD
           <MDBRow>
             <MDBCol>
               <MDBInput
@@ -111,21 +107,7 @@ function Cash() {
             </MDBCol>
           </MDBRow>
           <br />
-=======
-          <MDBInput
-            label="Amount Due"
-            id="due"
-            type="number"
-            name="due"
-            value={due}
-            onChange={(event) => setDue(event.target.value)}
-            style={inputStyle}
-            size="lg"
-            min="0.00"
-            step="0.01"
-            max="1000"
-          />
->>>>>>> 5e9a925e00e036dc69bcc50d0a9c338b66133ca3
+
           {/* input 2 = Amt Received */}
           <MDBInput
             label="Amount Received"

@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import Credit from './CreditCard';
 import Cash from './Cash';
-<<<<<<< HEAD
 import Totals from '../POS/Totals';
 
-import '../../App.css';
-=======
 import { Nav } from 'react-bootstrap';
 
 // import Totals from '../POS/Totals';
 // import '../../App.css';
->>>>>>> 5e9a925e00e036dc69bcc50d0a9c338b66133ca3
 
 class Form extends Component {
   state = {
