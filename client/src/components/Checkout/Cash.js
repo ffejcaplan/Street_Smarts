@@ -7,7 +7,7 @@ import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
 
 import { PosGlobalContext } from '../../context/POS/PosContext';
-import Modal from './ApprovedModal';
+import Modals from './ApprovedModal';
 
 import '../../App.css';
 // importing react-number-format
