@@ -16,27 +16,27 @@ function Team() {
         <div className="row">
           <div className="col-sm-6">
             <div className="team-member">
-              <img
+              {/* <img
                 className="mx-auto rounded-circle"
                 src="img/team/1.jpg"
                 alt=""
-              />
+              /> */}
               <h4>Ffej Caplan</h4>
               <p className="text-muted">Full Stack Developer</p>
               <ul className="list-inline social-buttons">
                 <li className="list-inline-item">
                   <a href="#something">
-                    <i className="fa fa-twitter"></i>
+                    <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
                   <a href="#something">
-                    <i className="fa fa-facebook-f"></i>
+                    <i className="fa fa-github fa-lg"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
                   <a href="#something">
-                    <i className="fa fa-linkedin-in"></i>
+                    <i className="fa fa-book"></i>
                   </a>
                 </li>
               </ul>
@@ -44,27 +44,27 @@ function Team() {
           </div>
           <div className="col-sm-6">
             <div className="team-member">
-              <img
+              {/* <img
                 className="mx-auto rounded-circle"
                 src="img/team/2.jpg"
                 alt=""
-              />
+              /> */}
               <h4>Sam Bonias</h4>
               <p className="text-muted">Full Stack Developer</p>
               <ul className="list-inline social-buttons">
                 <li className="list-inline-item">
                   <a href="#something">
-                    <i className="fa fa-twitter"></i>
+                    <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
                   <a href="#something">
-                    <i className="fa fa-facebook-f"></i>
+                    <i className="fa fa-github fa-lg"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
                   <a href="#something">
-                    <i className="fa fa-linkedin-in"></i>
+                    <i className="fa fa-book"></i>
                   </a>
                 </li>
               </ul>
