@@ -9,6 +9,7 @@ const initialState = {
   newLocation: false,
   pinned: false,
   pinnedStatus: '',
+  activeLocation: '',
 };
 
 export const LocationGlobalContext = createContext(initialState);
@@ -30,7 +31,6 @@ export const LocationsContextProvider = ({ children }) => {
   const setActive = async (id) => {
     try {
       const activeLocal = await LocationsAPI.putLocation(id);
-      console.log(activeLocal);
     } catch (err) {
       console.error(err, 'set active');
     }
@@ -42,7 +42,6 @@ export const LocationsContextProvider = ({ children }) => {
       // .then(() => {
       //   loadLocations();
       // });
-      console.log(newLocation);
     } catch (err) {
       console.error(err, 'hello???');
     }
@@ -54,7 +53,6 @@ export const LocationsContextProvider = ({ children }) => {
         type: 'SET_CURRENT_LOCATION',
         payload: location,
       });
-      console.log(location);
     } catch (err) {
       console.error(err, 'set current location');
     }
@@ -93,17 +91,15 @@ export const LocationsContextProvider = ({ children }) => {
   const pinnedStatusCheck = async () => {
     try {
       const pinned = await LocationsAPI.findActive();
-
       if (pinned.data.length > 0) {
         dispatch({
           type: 'PINNED_STATUS',
-          payload: true,
+          payload: { pinnedStatus: true, activeLocation: pinned.data },
         });
       } else {
-        console.log('unpinned');
         dispatch({
           type: 'PINNED_STATUS',
-          payload: false,
+          payload: { pinnedStats: false, activeLocation: '' },
         });
       }
     } catch (err) {
@@ -123,7 +119,6 @@ export const LocationsContextProvider = ({ children }) => {
 
   const resetPin = async () => {
     const reset = await LocationsAPI.resetPin();
-    console.log(reset);
     try {
       dispatch({
         type: 'RESET_PIN',
@@ -153,6 +148,7 @@ export const LocationsContextProvider = ({ children }) => {
         resetPin,
         pinnedStatus: state.pinnedStatus,
         pinnedStatusCheck,
+        activeLocation: state.activeLocation,
       }}
     >
       {children}

@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import * as truckData from '../../data/food-trucks.json';
+import { LocationGlobalContext } from '../../context/Location/LocationsContext';
+
+// import * as truckData from '../../data/food-trucks.json';
 
 function Map() {
+  const { activeLocation, pinnedStatusCheck } = useContext(
+    LocationGlobalContext
+  );
+
   const [viewport, setViewport] = useState({
     latitude: 43.6591,
     longitude: -70.2568,
@@ -48,26 +54,29 @@ function Map() {
               setViewport(viewport);
             }}
           >
-            {truckData.features.map((truck) => (
-              <Marker
-                key={truck.properties.PARK_ID}
-                latitude={truck.geometry.coordinates[1]}
-                longitude={truck.geometry.coordinates[0]}
-              >
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setSelectedTruck(truck);
-                  }}
-                >
-                  <i className="fa fa-truck" style={{ color: 'black' }}></i>
-                </button>
-              </Marker>
-            ))}
-            {selectedTruck ? (
+            {activeLocation &&
+              activeLocation.map((activeTruck) => {
+                return (
+                  <Marker
+                    key={parseInt(activeTruck.id)}
+                    latitude={parseFloat(activeTruck.latitude)}
+                    longitude={parseFloat(activeTruck.longitude)}
+                  >
+                    <button
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setSelectedTruck(activeTruck);
+                      }}
+                    >
+                      <i className="fa fa-truck" style={{ color: 'black' }}></i>
+                    </button>
+                  </Marker>
+                );
+              })}
+            {/* {activeTruck ? (
               <Popup
-                latitude={selectedTruck.geometry.coordinates[1]}
-                longitude={selectedTruck.geometry.coordinates[0]}
+                latitude={parseFloat(activeTruck.latitude)}
+                longitude={parseFloat(activeTruck.longitude)}
                 onClose={() => {
                   setSelectedTruck(null);
                 }}
@@ -77,7 +86,7 @@ function Map() {
                   <p>{selectedTruck.properties.DESCRIPTIO}</p>
                 </div>
               </Popup>
-            ) : null}
+            ) : null} */}
           </ReactMapGL>
         </div>
       </div>
