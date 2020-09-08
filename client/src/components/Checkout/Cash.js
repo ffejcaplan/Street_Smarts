@@ -96,7 +96,7 @@ function Cash() {
                 id="due"
                 type="number"
                 name="due"
-                value={orderTotalWithTax}
+                value={parseFloat(orderTotalWithTax)}
                 onChange={(event) => setDue(event.target.value)}
                 style={inputStyle}
                 size="lg"
