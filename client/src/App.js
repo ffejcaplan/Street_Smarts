@@ -10,44 +10,46 @@ import { PosContextProvider } from './context/POS/PosContext';
 import { LocationsContextProvider } from './context/Location/LocationsContext';
 import { SalesAndReportsContextProvider } from './context/SalesAndReports/SalesAndReportsContext';
 export default function App() {
-  if(window.location.href === 'http://localhost:3000/'){
-    return (<Landing />)
-  } else{
-  return (
-    <>
+  if (window.location.href === 'http://localhost:3000/') {
+    return (
       <LocationsContextProvider>
-        <Router>
-          <>
-            <Navbar />
-            <Switch>
-            
-              <Route exact path="/pos">
-                <PosContextProvider>
-                  <POS />
-                </PosContextProvider>
-              </Route>
-
-              <Route exact path="/reports">
-                <SalesAndReportsContextProvider>
-                  <Reports />
-                </SalesAndReportsContextProvider>
-              </Route>
-
-              <Route exact path="/pin">
-                <PinLocation />
-              </Route>
-
-              <Route exact path="/checkout">
-                <PosContextProvider>
-                  <Checkout />
-                </PosContextProvider>
-              </Route>
-
-            </Switch>
-          </>
-        </Router>
+        <Landing />
       </LocationsContextProvider>
-    </>
-  );
+    );
+  } else {
+    return (
+      <>
+        <LocationsContextProvider>
+          <Router>
+            <>
+              <Navbar />
+              <Switch>
+                <Route exact path="/pos">
+                  <PosContextProvider>
+                    <POS />
+                  </PosContextProvider>
+                </Route>
+
+                <Route exact path="/reports">
+                  <SalesAndReportsContextProvider>
+                    <Reports />
+                  </SalesAndReportsContextProvider>
+                </Route>
+
+                <Route exact path="/pin">
+                  <PinLocation />
+                </Route>
+
+                <Route exact path="/checkout">
+                  <PosContextProvider>
+                    <Checkout />
+                  </PosContextProvider>
+                </Route>
+              </Switch>
+            </>
+          </Router>
+        </LocationsContextProvider>
+      </>
+    );
   }
 }

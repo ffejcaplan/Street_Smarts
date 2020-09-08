@@ -43,7 +43,8 @@ export default (state, action) => {
     case 'PINNED_STATUS':
       return {
         ...state,
-        pinnedStatus: action.payload,
+        pinnedStatus: action.payload.pinnedStatus,
+        activeLocation: action.payload.activeLocation,
       };
 
     default:

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../../App.css';
 
 function Services() {
@@ -8,6 +9,12 @@ function Services() {
         <div className="row" id="services">
           <div className="col-lg-12 text-center">
             <h2 className="section-heading text-uppercase">Services</h2>
+            <button className="btn btn-success">
+              <a href="/pin" style={{ color: 'white' }}>
+                Test The Point of Sale System
+              </a>
+            </button>
+
             <h3 className="section-subheading text-muted">
               {/* Lorem ipsum dolor sit amet consectetur. */}
             </h3>
