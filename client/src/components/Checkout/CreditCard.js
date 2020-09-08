@@ -1,5 +1,5 @@
 // need state variables to keep track of user input
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 // importing cards component from library
 import Cards from 'react-credit-cards';
 // importing css that library provides
@@ -9,8 +9,11 @@ import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
 import Modal from './ApprovedModal';
 import '../../App.css';
+import { PosGlobalContext } from '../../context/POS/PosContext';
 
 function Credit() {
+  const { orderTotalWithTax } = useContext(PosGlobalContext);
+
   // declaring state variables
   // credit card number state
   const [number, setNumber] = useState('');
