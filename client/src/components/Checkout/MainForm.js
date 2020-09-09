@@ -30,20 +30,15 @@ class Form extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="container py-5">
+      <div className="container py-1">
         {/* For demo purpose */}
         <div className="row mb-4">
           <div className="col-lg-8 mx-auto text-center">
-            <h1 className="display-4" style={{ fontSize: '36px' }}>
+            <h1 className="display-4" style={{ fontSize: '32px' }}>
               Street Smarts Payment
             </h1>
           </div>
         </div>
-
-        {/* TOTAL DUE! */}
-        <div>Total Due: ${this.props.total}</div>
-        {/* TOTAL DUE! */}
-
         {/* End */}
         <div className="row">
           <div className="col-lg-6 mx-auto">
