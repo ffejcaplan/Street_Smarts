@@ -1,7 +1,29 @@
 import React from 'react';
+import emailjs from 'emailjs-com';
 import '../../App.css';
 
 function Contact() {
+  function sendEmail(event) {
+    event.preventDefault();
+
+    emailjs
+      .sendForm(
+        'gmail',
+        'template_kb7gb0i',
+        event.target,
+        'user_QPYRjvpaTLkpE5xJ3LelY'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    event.target.reset();
+  }
+
   return (
     <section className="page-section" id="contact">
       <br />
@@ -18,7 +40,12 @@ function Contact() {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            <form id="contactForm" name="sentMessage" novalidate="novalidate">
+            <form
+              id="contactForm"
+              name="sentMessage"
+              novalidate="novalidate"
+              onSubmit={sendEmail}
+            >
               <div className="row">
                 <div className="col-md-6">
                   <div className="form-group">
@@ -29,6 +56,7 @@ function Contact() {
                       placeholder="Your Name *"
                       required="required"
                       data-validation-required-message="Please enter your name."
+                      name="name"
                     />
                     <p className="help-block text-danger"></p>
                   </div>
@@ -40,6 +68,7 @@ function Contact() {
                       placeholder="Your Email *"
                       required="required"
                       data-validation-required-message="Please enter your email address."
+                      name="email"
                     />
                     <p className="help-block text-danger"></p>
                   </div>
@@ -51,6 +80,7 @@ function Contact() {
                       placeholder="Your Phone *"
                       required="required"
                       data-validation-required-message="Please enter your phone number."
+                      name="phone"
                     />
                     <p className="help-block text-danger"></p>
                   </div>
@@ -63,6 +93,7 @@ function Contact() {
                       placeholder="Your Message *"
                       required="required"
                       data-validation-required-message="Please enter a message."
+                      name="message"
                     ></textarea>
                     <p className="help-block text-danger"></p>
                   </div>
