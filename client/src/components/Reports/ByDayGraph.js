@@ -16,10 +16,8 @@ export default function ByDayGraph() {
     6: [],
   };
 
-  // date 30 days ago -- sets search parameters
   const dataLimit = moment().subtract(30, 'days').format('YYYY-MM-DD');
 
-  //gathers all sales between dataLimit and today
   const salesByDay = [];
 
   salesByDay.push(
@@ -34,15 +32,8 @@ export default function ByDayGraph() {
       })
   );
 
-  //loops over 0-6 corresponding to days of week
   for (let i = 0; i < 7; i++) {
-    // days = each day that fits the sepcific day in the loop
-    // if i equals to - days is equal to 2 days equals All tuesdays
     const days = salesByDay[0].filter((sale) => sale.day === i);
-
-    // finds each unique instance of that day of the week by date
-    // if there are four wednesdays in the last month, it will pull out each
-    // specific date so you can average out by date
     const uniqueDay = [
       ...new Set(
         days.map((dateDay) => {
@@ -51,22 +42,13 @@ export default function ByDayGraph() {
       ),
     ];
 
-    // maps through the array of each unique day
-    // pulls creates an array of sales made on that day
     const allOrdersBySpecificDate = uniqueDay.map((date) => {
       return days.filter((day) => day.date === date);
     });
 
-    // allOrdersBySpecificDate contains all sales made on each day
-
     let totalIn = 0;
     let denominator = 0;
 
-    // map through
-    //this is mapping throuhg all orders in the array allOrdersBySpecificDate
-    // which is an array that can contain mulitple dates
-    // so effectively this is mapping through all the orders placed on all the days
-    // a filter needs to be put in place to contain
     allOrdersBySpecificDate.map((orders) => {
       denominator += orders.length;
 
@@ -85,7 +67,6 @@ export default function ByDayGraph() {
       averageSale: averageIndividualSaleByDay,
     });
   }
-  console.log(daysOfTheWeek[0]);
   const chartData = {
     labels: [
       'Sunday',
@@ -133,9 +114,6 @@ export default function ByDayGraph() {
       },
     ],
   };
-
-  console.log(daysOfTheWeek);
-  console.log(chartData.dataSets);
 
   return (
     <div

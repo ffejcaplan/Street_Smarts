@@ -110,17 +110,19 @@ router.get('/currentlocation', (req, res) => {
 });
 
 router.post('/postorder', (req, res) => {
+  console.log(req.body);
+  console.log('over and out');
   db.Orders.create({
     date: moment().format('MM-DD-YYYY'), // TODO get extension for current date and time
     time: moment().format('hh:mm:ss'),
-    total: req.body.total,
-    customer: req.body.customer,
-    payment_method: req.body.payment_method,
-    locationId: req.body.locationId,
+    total: req.body.orderTotal,
+    customer: req.body.orderCustomer,
+    payment_method: req.body.paymentType,
+    locationId: req.body.orderLocationId,
   })
     .then((response) => {
       // send back orderId as response
-      res.status(200).json({ response });
+      res.status(200).json(response);
     })
     .catch((err) => {
       res.status(400).json(err);

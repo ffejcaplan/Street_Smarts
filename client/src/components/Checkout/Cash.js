@@ -14,7 +14,7 @@ import '../../App.css';
 import { Modal } from 'react-bootstrap';
 
 function Cash() {
-  const { orderTotalWithTax, setAmt } = useContext(PosGlobalContext);
+  const { orderTotalWithTax, setPaymentType } = useContext(PosGlobalContext);
   // declaring state variables
   // amount due input
   const [due, setDue] = useState('');
@@ -83,6 +83,10 @@ function Cash() {
     setCurrentSum('');
     // setDue('');
     setReceived('');
+  };
+  const handleSubmitProcess = () => {
+    setModalShow(true);
+    setPaymentType('cash');
   };
 
   return (
@@ -155,7 +159,7 @@ function Cash() {
             <MDBBtn gradient="blue" onClick={Clear}>
               Clear
             </MDBBtn>
-            <MDBBtn gradient="blue" onClick={() => setModalShow(true)}>
+            <MDBBtn gradient="blue" onClick={handleSubmitProcess}>
               Process
             </MDBBtn>
             <MyVerticallyCenteredModal

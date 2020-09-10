@@ -1,5 +1,5 @@
 // need state variables to keep track of user input
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 // importing cards component from library
 import Cards from 'react-credit-cards';
 // importing css that library provides
@@ -16,7 +16,13 @@ import { PosGlobalContext } from '../../context/POS/PosContext';
 import { Modal } from 'react-bootstrap';
 
 function Credit() {
-  const { orderTotalWithTax } = useContext(PosGlobalContext);
+  const { orderTotalWithTax, setPaymentType, postOrder } = useContext(
+    PosGlobalContext
+  );
+
+  useEffect(() => {
+    setPaymentType('credit');
+  }, []);
 
   // declaring state variables
   // credit card number state
@@ -37,6 +43,11 @@ function Credit() {
   const inputStyle = {
     marginTop: '2em',
     width: '20em',
+  };
+
+  const handleSubmitProcess = async () => {
+    setModalShow(true);
+    postOrder();
   };
 
   function MyVerticallyCenteredModal(props) {
@@ -156,7 +167,7 @@ function Credit() {
           <MDBBtn gradient="blue" onClick={Clear}>
             Clear
           </MDBBtn>
-          <MDBBtn gradient="blue" onClick={() => setModalShow(true)}>
+          <MDBBtn gradient="blue" onClick={handleSubmitProcess}>
             Process
           </MDBBtn>
           <MyVerticallyCenteredModal

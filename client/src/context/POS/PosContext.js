@@ -7,7 +7,7 @@ const initialState = {
   orderTax: 0,
   orderTotalWithTax: 0,
   orderCustomer: '',
-  orderPayment_method: '',
+  paymentType: '',
   orderLocationId: null,
   orderLatitude: null,
   orderLongitude: null,
@@ -90,6 +90,43 @@ export const PosContextProvider = ({ children }) => {
       });
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const postOrder = async () => {
+    try {
+      console.log(state);
+      const result = await API.postOrder(state);
+      dispatch({
+        type: 'POST_ORDER_ID',
+        payload: result.data.id,
+      }); // .catch((err) => {
+      //   console.error(err);
+      // })
+      // .then(() => {
+      //   state.items.map((item) => {
+      //     item.orderId = orderIdVar;
+      //     API.postItemOrder(item)
+      //       .then((res) => {
+      //         console.log('hello');
+      //         return res;
+      //       })
+      //       .catch((err) => {
+      //         console.error(err);
+      //       });
+      //   });
+      // })
+      // .then(() => {
+      //   API.postOrderLocation(state)
+      //     .then((res) => {
+      //       console.log(res);
+      //     })
+      //     .catch((err) => {
+      //       console.error(err);
+      //     });
+      // });
+    } catch (err) {
+      console.error(err, 'post order');
     }
   };
 
@@ -237,6 +274,28 @@ export const PosContextProvider = ({ children }) => {
     }
   };
 
+  const setCustomerName = (name) => {
+    try {
+      dispatch({
+        type: 'SET_CUSTOMER_NAME',
+        payload: name,
+      });
+    } catch (err) {
+      console.error(err, 'orderCustomer');
+    }
+  };
+
+  const setPaymentType = (type) => {
+    try {
+      dispatch({
+        type: 'SET_PAYMENT_TYPE',
+        payload: type,
+      });
+    } catch (err) {
+      console.error(err, 'set payment type');
+    }
+  };
+
   return (
     <PosGlobalContext.Provider
       value={{
@@ -276,6 +335,9 @@ export const PosContextProvider = ({ children }) => {
         setTotals,
         orderTax: state.orderTax,
         orderTotalWithTax: state.orderTotalWithTax,
+        setCustomerName,
+        setPaymentType,
+        postOrder,
       }}
     >
       {children}
@@ -297,38 +359,3 @@ export const PosContextProvider = ({ children }) => {
 // ----/---- populate orders
 // ----/---- populate order info to by location
 // ----/---- populate order id and items to orderItems
-
-//   const postOrder = (order) => {
-//     API.postOrder(order)
-//       .then((res) => {
-//         order.orderId = res.data.response.id;
-//         // receive orderId as response and set to state
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//       })
-//       .then(() => {
-//         order.items.map((item) => {
-//           item.orderId = order.orderId;
-//           API.postItemOrder(item)
-//             .then((res) => {
-//               console.log('hello');
-//               return res;
-//             })
-//             .catch((err) => {
-//               console.error(err);
-//             });
-//         });
-//       })
-//       .then(() => {
-//         API.postOrderLocation(order)
-//           .then((res) => {
-//             console.log(res);
-//           })
-//           .catch((err) => {
-//             console.error(err);
-//           });
-//       });
-
-// map throught items in order and add individually to
-//   };
