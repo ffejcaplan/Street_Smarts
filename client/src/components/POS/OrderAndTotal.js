@@ -34,7 +34,7 @@ export default function OrderAndTotal() {
     });
   };
   return (
-    <table className="table">
+    <table className="table" id="itemTable">
       {orderItems &&
         orderItems.map((orderItem) => {
           return (
@@ -51,7 +51,7 @@ export default function OrderAndTotal() {
                       reviewSelectedItem(e.target.value);
                     }}
                   >
-                    Edit
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </button>
                 </td>
                 <td>{orderItem.numberOfItem}x </td>
@@ -68,7 +68,7 @@ export default function OrderAndTotal() {
                     className="btn btn-danger"
                     onClick={(e) => deleteItemFromOrder(e.target.value)}
                   >
-                    delete
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </td>
               </tr>

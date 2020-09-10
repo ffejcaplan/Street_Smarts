@@ -1,23 +1,28 @@
 import React, { useContext, useEffect } from 'react';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
+import { Link } from 'react-router-dom';
 
 export default function PinButton() {
-  const {
-    pinned,
-    resetPin,
-    pinnedStatusCheck,
-    pinnedStatus,
-    togglePin,
-  } = useContext(LocationGlobalContext);
+  const { resetPin, pinnedStatus } = useContext(LocationGlobalContext);
 
-  if (pinned === true) {
+  // if (pinnedStatus === true) {
+  //   togglePin();
+  // }
+
+  if (pinnedStatus === true) {
     return (
       <button className="btn btn-primary" onClick={resetPin}>
         Un-Pin Location
       </button>
     );
   }
-  if (pinned !== true) {
-    return <button className="btn btn-success"> Pin Location</button>;
+  if (pinnedStatus !== true) {
+    return (
+      <button className="btn btn-success">
+        <Link to="/pin" style={{ color: 'white' }}>
+          Pin Location
+        </Link>
+      </button>
+    );
   }
 }

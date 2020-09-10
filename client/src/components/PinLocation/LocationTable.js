@@ -9,7 +9,6 @@ export default function LocationTable() {
     setActive,
     backPinLocation,
     togglePin,
-    pinnedStatusCheck,
   } = useContext(LocationGlobalContext);
 
   useEffect(() => {
@@ -40,6 +39,7 @@ export default function LocationTable() {
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Name</th>
             <th>Latitude</th>
             <th>Longitude</th>
@@ -51,8 +51,9 @@ export default function LocationTable() {
             return (
               <tbody key={location.id}>
                 <tr>
+                  <td>{location.id}.</td>
                   <td>
-                    {location.id}.{' '}
+                    {' '}
                     <button
                       value={location.id}
                       className="btn btn-primary"
