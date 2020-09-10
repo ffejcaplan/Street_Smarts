@@ -34,11 +34,13 @@ export default (state, action) => {
       return {
         ...state,
         pinned: true,
+        pinnedStatus: true,
       };
     case 'RESET_PIN':
       return {
         ...state,
         pinned: false,
+        pinnedStatus: false,
       };
     case 'PINNED_STATUS':
       return {

@@ -27,15 +27,18 @@ export default function POS() {
   if (checkout === false)
     return (
       <div className="row" style={{ height: '100%' }}>
-        <div className="col-sm-3">
+        <div className="col-xs-12 col-sm-3">
           <Categories />
           <br />
         </div>
 
-        <div className="col-sm-5">
+        <div className="col-xs-12 col-sm-5">
           <ItemDisplay />
         </div>
-        <div className="col-sm-4" style={{ height: '100%' }}>
+        <div
+          className="col-xs-12 col-sm-4"
+          style={{ height: '100%', right: 0 }}
+        >
           <OrderAndTotal />
 
           <Totals />

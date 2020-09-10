@@ -99,7 +99,7 @@ export const LocationsContextProvider = ({ children }) => {
       } else {
         dispatch({
           type: 'PINNED_STATUS',
-          payload: { pinnedStats: false, activeLocation: '' },
+          payload: { pinnedStatus: false, activeLocation: '' },
         });
       }
     } catch (err) {
