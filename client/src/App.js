@@ -10,7 +10,7 @@ import { PosContextProvider } from './context/POS/PosContext';
 import { LocationsContextProvider } from './context/Location/LocationsContext';
 import { SalesAndReportsContextProvider } from './context/SalesAndReports/SalesAndReportsContext';
 export default function App() {
-  if (window.location.href === 'http://localhost:3000/') {
+  if (window.location.pathname === '/') {
     return (
       <LocationsContextProvider>
         <Landing />

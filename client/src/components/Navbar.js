@@ -36,7 +36,7 @@ export default function Navbar() {
           <a
             className="nav-link"
             style={{ width: '40px' }}
-            href="http://localhost:3000/"
+            href="/"
             // onClick={() => {
             //   window.location.reload();
             // }}
