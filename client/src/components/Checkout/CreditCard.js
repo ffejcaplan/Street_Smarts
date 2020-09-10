@@ -62,6 +62,10 @@ function Credit() {
     );
   }
 
+  // "process" button can only be clicked when inputs have data
+  const isEnabled =
+    number.length > 0 && name.length > 0 && expiry.length > 0 && cvc.length > 0;
+
   const Clear = (event) => {
     // event.preventDefault();
     setClear(true);
@@ -156,7 +160,11 @@ function Credit() {
           <MDBBtn gradient="blue" onClick={Clear}>
             Clear
           </MDBBtn>
-          <MDBBtn gradient="blue" onClick={() => setModalShow(true)}>
+          <MDBBtn
+            gradient="blue"
+            onClick={() => setModalShow(true)}
+            disabled={!isEnabled}
+          >
             Process
           </MDBBtn>
           <MyVerticallyCenteredModal
