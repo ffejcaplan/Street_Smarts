@@ -6,12 +6,11 @@ import React, { Component, useState, useEffect, useContext } from 'react';
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing Context
 import { PosGlobalContext } from '../../context/POS/PosContext';
-// importing modal
-// import Modals from './ApprovedModal';
 // linking css
 import '../../App.css';
-
+// importing modal
 import { Modal } from 'react-bootstrap';
+// import Modals from './ApprovedModal';
 
 function Cash() {
   const { orderTotalWithTax, setPaymentType } = useContext(PosGlobalContext);
@@ -63,6 +62,9 @@ function Cash() {
       </Modal>
     );
   }
+
+  // "process" button can only be clicked when inputs have data
+  const isEnabled = currentSum.length > 0 && received.length > 0;
 
   const Calculate = (event) => {
     event.preventDefault();
@@ -159,7 +161,13 @@ function Cash() {
             <MDBBtn gradient="blue" onClick={Clear}>
               Clear
             </MDBBtn>
-            <MDBBtn gradient="blue" onClick={handleSubmitProcess}>
+
+            <MDBBtn
+              gradient="blue"
+              onClick={handleSubmitProcess}
+              disabled={!isEnabled}
+            >
+
               Process
             </MDBBtn>
             <MyVerticallyCenteredModal
