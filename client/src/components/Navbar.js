@@ -1,41 +1,79 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
+import { LocationGlobalContext } from '../context/Location/LocationsContext';
 import { Link } from 'react-router-dom';
 
 import PinButton from '../components/PinLocation/PinButton';
 
 export default function Navbar() {
+  const { pinnedStatusCheck } = useContext(LocationGlobalContext);
+
+  const [registerLink, setRegisterLink] = useState('nav-item');
+  const [reportsLink, setReportsLink] = useState('nav-item');
+
+  // useEffect(() => {
+  // const setActive = () => {
+  //   if (window.location.href === 'http://localhost:3000/pos') {
+  //     setRegisterLink('nav-item active');
+  //     setReportsLink('nav-item');
+  //   } else if (window.location.href === 'http://localhost:3000/reports') {
+  //     setRegisterLink('nav-item');
+  //     setReportsLink('nav-item active');
+  //   } else {
+  //     setReportsLink('nav-item');
+  //     setRegisterLink('nav-item');
+  //   }
+  // };
+  // }, []);
+
+  useEffect(() => {
+    pinnedStatusCheck();
+    // setActive();
+  }, []);
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="navbar-brand ">
+          <a
+            className="nav-link"
+            style={{ width: '40px' }}
+            href="http://localhost:3000/"
+            // onClick={() => {
+            //   window.location.reload();
+            // }}
+          >
+            <i
+              className="fa fa-truck "
+              style={{ color: 'black', width: '20px', height: '20px' }}
+            ></i>
+          </a>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className={registerLink}>
               <Link className="nav-link" to="/pos">
                 Register
               </Link>
             </li>
-            <li className="nav-item">
+            <li className={reportsLink}>
               <Link className="nav-link" to="/reports">
                 Reports
               </Link>
             </li>
           </ul>
         </div>
-        <Link to="/pin">
-          <PinButton />
-        </Link>
+
+        <PinButton />
       </nav>
     </>
   );
