@@ -7,9 +7,13 @@ import 'react-credit-cards/es/styles-compiled.css';
 // importing material UI components
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 // importing modal
-import Modal from './ApprovedModal';
+// import Modal from './ApprovedModal';
+// linking css
 import '../../App.css';
+// importing Context
 import { PosGlobalContext } from '../../context/POS/PosContext';
+
+import { Modal } from 'react-bootstrap';
 
 function Credit() {
   const { orderTotalWithTax } = useContext(PosGlobalContext);
@@ -25,10 +29,47 @@ function Credit() {
   const [cvc, setCvc] = useState('');
   // variable that the library component needs for styling and animation
   const [focus, setFocus] = useState('');
+  // clear function
+  const [clear, setClear] = useState('');
+
+  const [modalShow, setModalShow] = React.useState(false);
 
   const inputStyle = {
     marginTop: '2em',
     width: '20em',
+  };
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body className="text-center">
+          <MDBBtn
+            gradient="success"
+            onClick={() => {
+              props.onHide();
+              Clear();
+            }}
+          >
+            Payment Posted Successfully
+          </MDBBtn>
+        </Modal.Body>
+      </Modal>
+    );
+  }
+
+  const Clear = (event) => {
+    // event.preventDefault();
+    setClear(true);
+    setNumber('');
+    setName('');
+    setExpiry('');
+    setCvc('');
+    setFocus('');
   };
 
   return (
@@ -46,6 +87,20 @@ function Credit() {
       <form className="Forms">
         {/* input 1 = card number */}
         <MDBContainer>
+          {/* input 1 = Amt Due */}
+          <MDBInput
+            label="Amount Due"
+            id="due"
+            type="number"
+            name="due"
+            value={parseFloat(orderTotalWithTax)}
+            // onChange={(event) => setDue(event.target.value)}
+            style={inputStyle}
+            size="lg"
+            min="0.00"
+            step="0.01"
+            max="1000"
+          />
           <MDBInput
             label="Card Number"
             type="tel"
@@ -98,7 +153,17 @@ function Credit() {
             maxLength="3"
           />
           <br />
-          <Modal />
+          <MDBBtn gradient="blue" onClick={Clear}>
+            Clear
+          </MDBBtn>
+          <MDBBtn gradient="blue" onClick={() => setModalShow(true)}>
+            Process
+          </MDBBtn>
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+          {/* <Modal /> */}
         </MDBContainer>
       </form>
     </div>

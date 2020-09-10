@@ -1,20 +1,20 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable jsx-a11y/alt-text */
 // need state variables to keep track of user input
-import React, { useState, useEffect, useContext } from 'react';
+import React, { Component, useState, useEffect, useContext } from 'react';
 // importing material UI components
 import { MDBInput, MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
-// importing modal
-
+// importing Context
 import { PosGlobalContext } from '../../context/POS/PosContext';
-import Modals from './ApprovedModal';
-
+// importing modal
+// import Modals from './ApprovedModal';
+// linking css
 import '../../App.css';
-// importing react-number-format
-// import NumberFormat from 'react-number-format';
+
+import { Modal } from 'react-bootstrap';
 
 function Cash() {
-  const { orderTotalWithTax } = useContext(PosGlobalContext);
+  const { orderTotalWithTax, setAmt } = useContext(PosGlobalContext);
   // declaring state variables
   // amount due input
   const [due, setDue] = useState('');
@@ -25,14 +25,7 @@ function Cash() {
   // clear function
   const [clear, setClear] = useState('');
 
-  // const submitHandler = (event) => {
-  //   event.preventDefault();
-  //   event.target.className += " was-validated";
-  // };
-
-  // const changeHandler = (event) => {
-  //   this.setValidation({ [event.target.name]: event.target.value });
-  // };
+  const [modalShow, setModalShow] = React.useState(false);
 
   const inputStyle = {
     marginTop: '2em',
@@ -48,10 +41,33 @@ function Cash() {
     if (clear) setCurrentSum('');
   });
 
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body className="text-center">
+          <MDBBtn
+            gradient="success"
+            onClick={() => {
+              props.onHide();
+              Clear();
+            }}
+          >
+            Payment Posted Successfully
+          </MDBBtn>
+        </Modal.Body>
+      </Modal>
+    );
+  }
+
   const Calculate = (event) => {
     event.preventDefault();
     if (clear) setClear(false);
-    let amtDue = parseFloat(due).toFixed(2);
+    let amtDue = parseFloat(orderTotalWithTax).toFixed(2);
     console.log(parseInt(amtDue));
     let amtRec = parseFloat(received).toFixed(2);
     console.log(parseInt(amtRec));
@@ -62,10 +78,10 @@ function Cash() {
   };
 
   const Clear = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setClear(true);
     setCurrentSum('');
-    setDue('');
+    // setDue('');
     setReceived('');
   };
 
@@ -89,25 +105,19 @@ function Cash() {
       <form className="Forms">
         {/* input 1 = Amt Due */}
         <MDBContainer>
-          <MDBRow>
-            <MDBCol>
-              <MDBInput
-                label="Amount Due"
-                id="due"
-                type="number"
-                name="due"
-                value={parseFloat(orderTotalWithTax)}
-                onChange={(event) => setDue(event.target.value)}
-                style={inputStyle}
-                size="lg"
-                min="0.00"
-                step="0.01"
-                max="1000"
-              />
-            </MDBCol>
-          </MDBRow>
-          <br />
-
+          <MDBInput
+            label="Amount Due"
+            id="due"
+            type="number"
+            name="due"
+            value={parseFloat(orderTotalWithTax)}
+            // onChange={(event) => setDue(event.target.value)}
+            style={inputStyle}
+            size="lg"
+            min="0.00"
+            step="0.01"
+            max="1000"
+          />
           {/* input 2 = Amt Received */}
           <MDBInput
             label="Amount Received"
@@ -145,7 +155,14 @@ function Cash() {
             <MDBBtn gradient="blue" onClick={Clear}>
               Clear
             </MDBBtn>
-            <Modals onSubmit={Clear} />
+            <MDBBtn gradient="blue" onClick={() => setModalShow(true)}>
+              Process
+            </MDBBtn>
+            <MyVerticallyCenteredModal
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+            />
+            {/* <Modals /> */}
           </MDBRow>
         </MDBContainer>
       </form>
@@ -154,16 +171,3 @@ function Cash() {
 }
 
 export default Cash;
-
-{
-  /* <NumberFormat
-              value={received}
-              label="Amount Received"
-              displayType={'input'}
-              thousandSeparator={true}
-              prefix={'$'}
-              decimalScale={'2'}
-              fixedDecimalScale={'true'}
-              size={'lg'}
-            /> */
-}
