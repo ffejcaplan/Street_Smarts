@@ -1,5 +1,7 @@
 /* eslint-disable default-case */
 
+import { act } from 'react-dom/test-utils';
+
 export default (state, action) => {
   switch (action.type) {
     case 'LOAD_INVENTORY':
@@ -106,6 +108,21 @@ export default (state, action) => {
         ...state,
         orderTax: (state.orderTotal * 0.08).toFixed(2),
         orderTotalWithTax: (state.orderTotal * 1.08).toFixed(2),
+      };
+    case 'SET_CUSTOMER_NAME':
+      return {
+        ...state,
+        orderCustomer: action.payload,
+      };
+    case 'SET_PAYMENT_TYPE':
+      return {
+        ...state,
+        paymentType: action.payload,
+      };
+    case 'POST_ORDER_ID':
+      return {
+        ...state,
+        orderId: action.payload,
       };
     // return {
     //   ...state,
