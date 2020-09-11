@@ -53,17 +53,17 @@ function Team() {
               <p className="text-muted">Full Stack Developer</p>
               <ul className="list-inline social-buttons">
                 <li className="list-inline-item">
-                  <a href="#something">
+                  <a href="https://www.linkedin.com/in/sam-bonias/">
                     <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#something">
+                  <a href="https://github.com/sbonias/">
                     <i className="fa fa-github fa-lg"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#something">
+                  <a href="https://sbonias.github.io/react-portfolio/">
                     <i className="fa fa-book"></i>
                   </a>
                 </li>

@@ -42,7 +42,7 @@ function Credit() {
 
   const inputStyle = {
     marginTop: '2em',
-    width: '20em',
+    // width: '20em',
   };
 
   const handleSubmitProcess = async () => {
@@ -174,7 +174,7 @@ function Credit() {
 
           <MDBBtn
             gradient="blue"
-onClick={handleSubmitProcess}
+            onClick={handleSubmitProcess}
             disabled={!isEnabled}
           >
 
