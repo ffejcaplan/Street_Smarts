@@ -33,18 +33,14 @@ export default function Navbar() {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="navbar-brand ">
-          <a
-            className="nav-link"
-            style={{ width: '40px' }}
-            href="/"
-            // onClick={() => {
-            //   window.location.reload();
-            // }}
-          >
-            <i
-              className="fa fa-truck "
-              style={{ color: 'black', width: '20px', height: '20px' }}
-            ></i>
+          <a href="/">
+            <img
+              className="img-thumbnail"
+              src="./StreetSmartsLogo3.jpg"
+              alt="logo"
+              // width="600px"
+              // height="600px"
+            />
           </a>
         </div>
         <button

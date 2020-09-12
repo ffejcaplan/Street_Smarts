@@ -4,6 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import SalesReport from '../components/Reports/SalesReport';
 import ByDayGraph from '../components/Reports/ByDayGraph';
+import ByLocationMap from '../components/Reports/ByLocationMap';
 
 export default function Report() {
   return (
@@ -17,7 +18,7 @@ export default function Report() {
           <ByDayGraph />
         </Tab>
         <Tab eventKey="byLocation" title="Sales By Location">
-          {/* <Sonnet /> */}
+          <ByLocationMap />
         </Tab>
       </Tabs>
     </div>

@@ -13,7 +13,9 @@ import { Modal } from 'react-bootstrap';
 // import Modals from './ApprovedModal';
 
 function Cash() {
-  const { orderTotalWithTax, setPaymentType } = useContext(PosGlobalContext);
+  const { orderTotalWithTax, setPaymentType, postOrder } = useContext(
+    PosGlobalContext
+  );
   // declaring state variables
   // amount due input
   const [due, setDue] = useState('');
@@ -33,6 +35,7 @@ function Cash() {
 
   useEffect(() => {
     setCurrentSum('');
+    setPaymentType('cash');
   }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,9 +89,9 @@ function Cash() {
     // setDue('');
     setReceived('');
   };
-  const handleSubmitProcess = () => {
+  const handleSubmitProcess = async () => {
     setModalShow(true);
-    setPaymentType('cash');
+    postOrder();
   };
 
   return (
