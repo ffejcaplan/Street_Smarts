@@ -2,7 +2,7 @@ import React from 'react';
 import '../../App.css';
 import MySQL from '../../assets/img/mysql.jpg';
 import Express from '../../assets/img/express.png';
-import ReactJS from '../../assets/img/react.jpg';
+import ReactJS from '../../assets/img/react.png';
 import Node from '../../assets/img/node.png';
 import Mapbox from '../../assets/img/mapbox.png';
 import Bootstrap from '../../assets/img/bootstrap.jpg';

@@ -98,7 +98,7 @@ function Contact() {
                     <p className="help-block text-danger"></p>
                   </div>
                 </div>
-                <div className="clearfix"></div>
+                {/* <div className="clearfix"></div> */}
                 <div className="col-lg-12 text-center">
                   <div id="success"></div>
                   <button

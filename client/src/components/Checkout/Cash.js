@@ -28,7 +28,7 @@ function Cash() {
 
   const inputStyle = {
     marginTop: '2em',
-    width: '20em',
+    // width: '20em',
   };
 
   useEffect(() => {
@@ -92,19 +92,20 @@ function Cash() {
   };
 
   return (
-    <div>
+    <div className="col-lg-12 col-md8 col-sm-12">
       <br />
       <MDBRow>
         <MDBCol md="12" sm="12" xs="12">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/7/7b/United_States_one_dollar_bill%2C_obverse.jpg"
-            style={{
-              width: '425px',
-              height: '190px',
-              display: 'block',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}
+            className="col-lg-12 col-md8 col-sm-12"
+            // style={{
+            //   width: '425px',
+            //   height: '190px',
+            //   display: 'block',
+            //   marginLeft: 'auto',
+            //   marginRight: 'auto',
+            // }}
           />
         </MDBCol>
       </MDBRow>
@@ -167,7 +168,6 @@ function Cash() {
               onClick={handleSubmitProcess}
               disabled={!isEnabled}
             >
-
               Process
             </MDBBtn>
             <MyVerticallyCenteredModal
