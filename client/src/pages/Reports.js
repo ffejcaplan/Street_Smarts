@@ -7,7 +7,7 @@ import ByDayGraph from '../components/Reports/ByDayGraph';
 
 export default function Report() {
   return (
-    <div className="xs-col-12 sm-col-10">
+    <div className="xs-col-12 sm-col-10" id="reportsPage">
       <br />
       <Tabs defaultActiveKey="sales" id="uncontrolled-tab-example">
         <Tab eventKey="sales" title="Sales">

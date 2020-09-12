@@ -44,10 +44,6 @@ export default function OrderItemReview() {
   const addUpdatedToOrder = (key, value) => {
     //if value ===0 delete target from order items
     if (value === 0) {
-      console.log(key);
-      console.log(value);
-      console.log(revisedOrder);
-
       const index = revisedOrder.findIndex(
         (item) => parseInt(item.itemId) === parseInt(key)
       );
@@ -77,7 +73,7 @@ export default function OrderItemReview() {
             return (
               <div key={info.key} id="displayItemDiv">
                 <p>{info.itemName}</p>
-                <p>{info.price}</p>
+                <p>${info.price}</p>
                 <div>
                   <button
                     className="btn btn-primary"

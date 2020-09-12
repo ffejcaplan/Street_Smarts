@@ -43,7 +43,6 @@ export default function LocationTable() {
             <th>Name</th>
             <th>Latitude</th>
             <th>Longitude</th>
-            <th></th>
           </tr>
         </thead>
         {locations &&
@@ -67,9 +66,6 @@ export default function LocationTable() {
                   <td>{location.nickname}</td>
                   <td>{location.latitude}</td>
                   <td>{location.longitude}</td>
-                  <td>
-                    <button className="btn btn-primary">View on Map</button>
-                  </td>
                 </tr>
               </tbody>
             );

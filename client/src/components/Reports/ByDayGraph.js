@@ -118,8 +118,7 @@ export default function ByDayGraph() {
   return (
     <div
       style={{
-        width: '70%',
-        height: '70%',
+        height: '60%',
         marginLeft: 'auto',
         marginRight: 'auto',
       }}
@@ -134,7 +133,7 @@ export default function ByDayGraph() {
           },
           legend: {
             display: true,
-            position: 'right',
+            position: 'bottom',
           },
         }}
       />

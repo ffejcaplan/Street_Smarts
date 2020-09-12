@@ -12,7 +12,7 @@ function Main() {
           <TitleMessage />
           <div className="intro-heading text-uppercase"></div>
           <a
-            className="btn btn-black btn-xl text-uppercase js-scroll-trigger font-weight-bold"
+            className="btn btn-black btn-xl text-uppercase text-white js-scroll-trigger font-weight-bold"
             href="#services"
           >
             Tell Me More

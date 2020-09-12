@@ -57,7 +57,7 @@ export default function DisplayItem() {
             return (
               <div key={info.id} id="displayItemDiv">
                 <p>{info.itemName}</p>
-                <p>{info.price}</p>
+                <p>${info.price}</p>
                 <div>
                   <button
                     className="btn btn-primary"
