@@ -7,7 +7,7 @@ export default function Totals() {
   const { orderTotal } = useContext(PosGlobalContext);
 
   return (
-    <div style={{ position: 'fixed', bottom: 0 }}>
+    <div id="totalsDiv">
       <br />
       <br />
       <p style={{ marginLeft: '10px' }}>Subtotal: ${orderTotal.toFixed(2)}</p>

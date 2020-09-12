@@ -20,7 +20,7 @@ export default function MenuItems() {
     falseReviewOrder();
   };
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <div id="itemsDiv" style={{ height: '100%', width: '100%' }}>
       {categoryKey &&
         items &&
         items.map((item) => {

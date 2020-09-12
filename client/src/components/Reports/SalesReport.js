@@ -12,7 +12,7 @@ export default function SalesReport() {
   const todaysDate = moment().format('YYYY-MM-DD');
 
   return (
-    <table className="table">
+    <table className="table" id="salesTable">
       <thead>
         <tr>
           <th>Date</th>

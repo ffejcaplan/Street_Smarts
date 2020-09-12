@@ -675,6 +675,61 @@ ul.social-buttons li a:hover {
   background-color: #fed136;
 }
 
+#totalsDiv {
+  position: fixed;
+  bottom: 0;
+}
+
+#salesTable {
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+#reportsPage {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#displayItemDiv {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+@media only screen and (min-width: 767px) {
+  #categoryToggle {
+    display: none;
+  }
+  #divbarResponsive {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  #divbarResponse {
+    display: none;
+  }
+  #totalsDiv {
+    position: relative;
+    bottom: auto;
+    margin-left: 20px;
+    margin-right: 5%;
+  }
+  #itemsDiv {
+    margin-left: 20px;
+    margin-right: 5%;
+  }
+  #itemTable {
+    margin-top: 40px;
+  }
+  #displayItemDiv {
+    margin-left: 20px;
+    margin-right: 5%;
+  }
+}
+
 /* @media (max-width: 575px) {
   #map {
     width: 90%;
