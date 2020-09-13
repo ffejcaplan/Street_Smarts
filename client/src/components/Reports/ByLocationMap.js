@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { SalesGlobalContext } from '../../context/SalesAndReports/SalesAndReportsContext';
+import React from 'react';
 import MapData from './MapData';
 
 export default function ByLocationMap(props) {
+  console.log('hello world');
   const salesByLocation = props.salesData;
   const locations = props.locations;
   const combineByLocation = [];
