@@ -118,7 +118,6 @@ export const LocationsContextProvider = ({ children }) => {
   };
 
   const resetPin = async () => {
-    const reset = await LocationsAPI.resetPin();
     try {
       dispatch({
         type: 'RESET_PIN',

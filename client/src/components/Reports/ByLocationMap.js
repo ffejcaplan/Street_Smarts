@@ -1,16 +1,46 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { SalesGlobalContext } from '../../context/SalesAndReports/SalesAndReportsContext';
+import MapData from './MapData';
 
-export default function ByLocationMap() {
-  const { sales, loadSales } = useContext(SalesGlobalContext);
+export default function ByLocationMap(props) {
+  const salesByLocation = props.salesData;
+  const locations = props.locations;
+  const combineByLocation = [];
+  const locationIds = [];
+  const finalSales = [];
+  const usedLocations = [];
 
-  useEffect(() => {
-    loadSales();
-  }, []);
+  salesByLocation.map((sales) => {
+    locationIds.push(sales.locationId);
+  });
+  const uniqueIds = new Set(locationIds);
+  const idArray = [...uniqueIds];
 
-  sales.map((sale) => {
-    console.log(sale.locationId, sale.total);
+  idArray.map((id) => {
+    const match = salesByLocation.filter((sales) => sales.locationId === id);
+    combineByLocation.push(match);
+  });
+  combineByLocation.map((saleDay) => {
+    let totalSalesDay = 0;
+    let avgSale = 0;
+    let spot = locations.filter(
+      (location) => location.id === saleDay[0].locationId
+    );
+    usedLocations.push(spot);
+    saleDay.map((day) => {
+      totalSalesDay += parseFloat(day.averageTotal);
+      avgSale += parseFloat(day.averageSaleByDay);
+    });
+
+    const averages = {
+      id: saleDay[0].locationId,
+      averageSale: (parseFloat(avgSale) / parseInt(saleDay.length)).toFixed(2),
+      avgDayTotal: (
+        parseFloat(totalSalesDay) / parseInt(saleDay.length)
+      ).toFixed(2),
+    };
+    finalSales.push(averages);
   });
 
-  return <></>;
+  return <MapData sales={finalSales} locations={usedLocations} />;
 }
