@@ -41,6 +41,6 @@ export default function ByLocationMap(props) {
     };
     finalSales.push(averages);
   });
-
+  console.log(usedLocations);
   return <MapData sales={finalSales} locations={usedLocations} />;
 }
