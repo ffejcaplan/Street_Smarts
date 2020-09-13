@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../assets/logos/StreetSmartsLogo3.jpg';
 import '../../App.css';
 
 function Nav() {
@@ -6,7 +7,12 @@ function Nav() {
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div className="container">
         <a className="navbar-brand js-scroll-trigger" href="#page-top">
-          <i className="fa fa-truck" style={{ color: 'whitesmoke' }}></i>
+          <img
+            className="img-thumbnail js-scroll-trigger"
+            src={Logo}
+            alt="logo"
+            width="60px"
+          />
         </a>
         <button
           className="navbar-toggler navbar-toggler-right"

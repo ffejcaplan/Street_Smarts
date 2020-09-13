@@ -4,7 +4,8 @@ import SalesReducer from './SalesReducer';
 
 const initalState = {
   sales: [],
-  byLocation: [],
+  locations: [],
+  salesForMap: [],
 };
 
 export const SalesGlobalContext = createContext(initalState);
@@ -23,20 +24,41 @@ export const SalesAndReportsContextProvider = ({ children }) => {
     }
   };
 
-  const loadByLocation = async () => {
+  const getLocations = async () => {
     try {
-      const result = await ReportsAPI.loadByLocation();
+      const result = await ReportsAPI.getLocations();
       dispatch({
-        type: 'LOAD_BY_LOCATION',
-        payload: result,
+        type: 'LOAD_LOCATIONS',
+        payload: result.data,
       });
     } catch (err) {
-      console.err0r(err, 'load by location');
+      console.error(err, 'load by location');
+    }
+  };
+
+  const setSalesForMap = (salesData) => {
+    console.log(salesData);
+    try {
+      dispatch({
+        type: 'SALES_FOR_MAP',
+        payload: salesData,
+      });
+    } catch (err) {
+      console.error(err, 'sales for map');
     }
   };
 
   return (
-    <SalesGlobalContext.Provider value={{ loadSales, sales: state.sales }}>
+    <SalesGlobalContext.Provider
+      value={{
+        loadSales,
+        sales: state.sales,
+        setSalesForMap,
+        salesForMap: state.salesForMap,
+        getLocations,
+        locations: state.locations,
+      }}
+    >
       {children}
     </SalesGlobalContext.Provider>
   );

@@ -5,11 +5,12 @@ export default (state, action) => {
         ...state,
         sales: action.payload,
       };
-    case 'LOAD_BY_LOCATION':
+    case 'LOAD_LOCATIONS':
       return {
         ...state,
-        byLocation: action.payload,
+        locations: action.payload,
       };
+
     default:
       return state;
   }

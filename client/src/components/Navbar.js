@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
+import Logo from '../assets/logos/StreetSmartsLogo3.jpg';
 import { LocationGlobalContext } from '../context/Location/LocationsContext';
 import { Link } from 'react-router-dom';
 
@@ -34,13 +35,7 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="navbar-brand ">
           <a href="/">
-            <img
-              className="img-thumbnail"
-              src="./StreetSmartsLogo3.jpg"
-              alt="logo"
-              // width="600px"
-              // height="600px"
-            />
+            <img className="img-thumbnail" src={Logo} alt="logo" width="50px" />
           </a>
         </div>
         <button

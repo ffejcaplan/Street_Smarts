@@ -4,7 +4,7 @@ export default {
   loadSales: function () {
     return axios.get('/api/sales');
   },
-  loadByLocation: function () {
-    return axios.get('api/salesbylocation');
+  getLocations: function () {
+    return axios.get('api/locations');
   },
 };

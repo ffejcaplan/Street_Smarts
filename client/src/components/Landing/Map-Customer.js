@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Logo from '../../assets/logos/StreetSmartsLogo3.jpg';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
 
@@ -63,12 +64,20 @@ function Map() {
                     longitude={parseFloat(activeTruck.longitude)}
                   >
                     <button
+                      className="btn btn-primary"
+                      style={{ padding: 0 }}
                       onClick={(event) => {
                         event.preventDefault();
                         setSelectedTruck(activeTruck);
                       }}
                     >
-                      <i className="fa fa-truck" style={{ color: 'black' }}></i>
+                      <img
+                        className="img-thumbnail"
+                        src={Logo}
+                        alt="logo"
+                        width="40px"
+                        // height="40px"
+                      />
                     </button>
                   </Marker>
                 );

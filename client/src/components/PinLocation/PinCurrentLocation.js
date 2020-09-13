@@ -3,6 +3,7 @@ import { LocationGlobalContext } from '../../context/Location/LocationsContext';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import BackButton from './BackButton';
 import LocationNickname from './LocationNickname';
+import Logo from '../../assets/logos/StreetSmartsLogo3.jpg';
 
 export default function PinCurrentLocation() {
   const { currentLocation } = useContext(LocationGlobalContext);
@@ -34,8 +35,7 @@ export default function PinCurrentLocation() {
           latitude={currentLocation.latitude}
           longitude={currentLocation.longitude}
         >
-          <button>Hi</button>
-          {/* TODO get a better pin */}
+          <img className="img-thumbnail" src={Logo} alt="logo" width="50px" />
         </Marker>
       </ReactMapGL>
       <LocationNickname />
