@@ -3,16 +3,10 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import Logo from '../../assets/logos/StreetSmartsLogo3.jpg';
 import { Modal } from 'react-bootstrap';
 
-import {
-  MDBInput,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
-  MDBAlert,
-} from 'mdbreact';
+import { MDBBtn } from 'mdbreact';
 
 export default function MapData(props) {
+  console.log('map data page');
   const [modalShow, setModalShow] = useState(false);
   const [viewport, setViewport] = useState();
   const [marker, setMarker] = useState();
@@ -144,7 +138,6 @@ export default function MapData(props) {
         onHide={() => {
           setModalShow(false);
         }}
-      />
       />
     </>
   );
