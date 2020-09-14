@@ -41,13 +41,13 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     value={orderItem.key}
-                    className="row btn btn-warning"
-                    style={{ marginLeft: '10px' }}
+                    className="fa fa-pencil-square-o btn-warning "
+                    style={{ marginLeft: '10px', borderRadius: '6px' }}
                     onClick={(e) => {
                       reviewSelectedItem(e.target.value);
                     }}
                   >
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    {/* <i className="fa fa-pencil-square-o" /> */}
                   </button>
                 </td>
                 <td>{orderItem.numberOfItem}x </td>
@@ -61,10 +61,11 @@ export default function OrderAndTotal() {
                 <td>
                   <button
                     value={orderItem.key}
-                    className="btn btn-danger"
+                    style={{ borderRadius: '6px' }}
+                    className="fa fa-trash btn-danger "
                     onClick={(e) => deleteItemFromOrder(e.target.value)}
                   >
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    {/* <i className="fa fa-trash" /> */}
                   </button>
                 </td>
               </tr>
