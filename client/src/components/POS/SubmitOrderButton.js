@@ -3,9 +3,9 @@ import { PosGlobalContext } from '../../context/POS/PosContext';
 import { Modal } from 'react-bootstrap';
 import {
   MDBInput,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
+  // MDBContainer,
+  // MDBRow,
+  // MDBCol,
   MDBBtn,
   MDBAlert,
 } from 'mdbreact';
@@ -18,11 +18,6 @@ export default function SubmitOrderButton() {
   const [nameModalShow, setNameModalShow] = useState(false);
   const [showError, setShowError] = useState('invisible');
   const [nameInput, setNameInput] = useState();
-
-  //   const { orderItemDisplay } = useContext(PosGlobalContext);
-  //   useEffect(() => {
-  //     loadCategories();
-  //   }, []);
 
   const ErrorModal = (props) => {
     return (
