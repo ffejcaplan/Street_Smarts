@@ -11,9 +11,6 @@ export default function MenuItems() {
     setSelectedTrue,
   } = useContext(PosGlobalContext);
 
-  //   useEffect(() => {
-  //     loadInventory();
-  //   }, []);
   const itemClick = (event) => {
     setSelectedTrue();
     displayItem(event);

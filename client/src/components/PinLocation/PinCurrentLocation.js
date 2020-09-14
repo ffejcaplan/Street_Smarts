@@ -8,9 +8,6 @@ import Logo from '../../assets/logos/StreetSmartsLogo3.jpg';
 export default function PinCurrentLocation() {
   const { currentLocation } = useContext(LocationGlobalContext);
 
-  //   useEffect(() => {
-  //     console.log(currentLocation);
-  //   });
   const viewpoint = currentLocation;
 
   return (

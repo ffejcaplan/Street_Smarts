@@ -18,8 +18,6 @@ export default function OrderAndTotal() {
   };
 
   const deleteItemFromOrder = (key) => {
-    //TODO why filter no work?
-
     revisedOrder.map((item) => {
       if (parseInt(item.key) === parseInt(key)) {
         const index = revisedOrder.indexOf(item);
@@ -42,8 +40,6 @@ export default function OrderAndTotal() {
               <tr>
                 <td>
                   <button
-                    // TODO figure out a key
-
                     value={orderItem.key}
                     className="row btn btn-warning"
                     style={{ marginLeft: '10px' }}

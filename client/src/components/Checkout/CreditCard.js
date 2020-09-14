@@ -16,7 +16,7 @@ import { PosGlobalContext } from '../../context/POS/PosContext';
 import { Modal } from 'react-bootstrap';
 
 function Credit() {
-  const { orderTotalWithTax, setPaymentType, postOrder } = useContext(
+  const { orderTotalWithTax, setPaymentType, postOrder, resetPos } = useContext(
     PosGlobalContext
   );
 
@@ -64,6 +64,7 @@ function Credit() {
             onClick={() => {
               props.onHide();
               Clear();
+              resetPos();
             }}
           >
             Payment Posted Successfully
@@ -177,7 +178,6 @@ function Credit() {
             onClick={handleSubmitProcess}
             disabled={!isEnabled}
           >
-
             Process
           </MDBBtn>
           <MyVerticallyCenteredModal

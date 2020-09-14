@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { Marker } from 'react-map-gl';
 
 import LocationsAPI from '../../utils/LocationsAPI';
 

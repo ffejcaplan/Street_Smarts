@@ -13,7 +13,7 @@ import { Modal } from 'react-bootstrap';
 // import Modals from './ApprovedModal';
 
 function Cash() {
-  const { orderTotalWithTax, setPaymentType, postOrder } = useContext(
+  const { orderTotalWithTax, setPaymentType, postOrder, resetPos } = useContext(
     PosGlobalContext
   );
   // declaring state variables
@@ -57,6 +57,7 @@ function Cash() {
             onClick={() => {
               props.onHide();
               Clear();
+              resetPos();
             }}
           >
             Payment Posted Successfully

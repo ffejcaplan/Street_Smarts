@@ -124,6 +124,23 @@ export default (state, action) => {
         ...state,
         orderId: action.payload,
       };
+    case 'RESET':
+      return {
+        ...state,
+        orderTotal: 0,
+        orderTax: 0,
+        orderTotalWithTax: 0,
+        orderCustomer: '',
+        paymentType: '',
+        orderId: '',
+        orderItems: [],
+        categoryKey: '',
+        numberOfItemsForOrder: 1,
+        reviewOrder: false,
+        menuItemSelect: false,
+        itemKeyIncrement: 1,
+        checkout: false,
+      };
     // return {
     //   ...state,
     //   orderTotal: newTotal,

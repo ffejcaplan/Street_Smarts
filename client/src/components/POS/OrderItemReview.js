@@ -10,10 +10,6 @@ export default function OrderItemReview() {
     setSelectedFalse,
   } = useContext(PosGlobalContext);
 
-  //   useEffect(() => {
-  //     loadInventory();
-  //   }, []);
-
   const revisedOrder = orderItems;
 
   const editExistingorder = (operation, key) => {
@@ -24,7 +20,6 @@ export default function OrderItemReview() {
           if (info.numberOfItem > 0) {
             info.numberOfItem--;
           }
-          //   figure out how to remove else{}
         });
     } else if (operation === 'plus') {
       revisedOrder
@@ -42,7 +37,6 @@ export default function OrderItemReview() {
   };
 
   const addUpdatedToOrder = (key, value) => {
-    //if value ===0 delete target from order items
     if (value === 0) {
       const index = revisedOrder.findIndex(
         (item) => parseInt(item.itemId) === parseInt(key)

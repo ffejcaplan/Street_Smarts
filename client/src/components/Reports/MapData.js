@@ -6,8 +6,6 @@ import { Modal } from 'react-bootstrap';
 import { MDBBtn } from 'mdbreact';
 
 export default function MapData(props) {
-  console.log(props.locations);
-  console.log('map data page');
   const [modalShow, setModalShow] = useState(false);
   const [viewport, setViewport] = useState();
   const [marker, setMarker] = useState();
@@ -23,9 +21,7 @@ export default function MapData(props) {
       ...sales.find((sale) => sale.id === location.id),
     }));
   }
-  console.log(viewport);
   const handleMapClick = (long, lat) => {
-    console.log(long, lat);
     setMarker([{ longitude: parseFloat(long), latitude: parseFloat(lat) }]);
     setViewport({
       longitude: parseFloat(long),
@@ -58,7 +54,6 @@ export default function MapData(props) {
           >
             {marker &&
               marker.map((mark) => {
-                console.log(mark);
                 return (
                   <Marker
                     key={1}

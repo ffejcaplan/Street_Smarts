@@ -11,24 +11,8 @@ export default function Navbar() {
   const [registerLink, setRegisterLink] = useState('nav-item');
   const [reportsLink, setReportsLink] = useState('nav-item');
 
-  // useEffect(() => {
-  // const setActive = () => {
-  //   if (window.location.href === 'http://localhost:3000/pos') {
-  //     setRegisterLink('nav-item active');
-  //     setReportsLink('nav-item');
-  //   } else if (window.location.href === 'http://localhost:3000/reports') {
-  //     setRegisterLink('nav-item');
-  //     setReportsLink('nav-item active');
-  //   } else {
-  //     setReportsLink('nav-item');
-  //     setRegisterLink('nav-item');
-  //   }
-  // };
-  // }, []);
-
   useEffect(() => {
     pinnedStatusCheck();
-    // setActive();
   }, []);
   return (
     <>
