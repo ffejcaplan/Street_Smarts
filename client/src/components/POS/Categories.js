@@ -11,9 +11,6 @@ export default function Categories() {
     falseReviewOrder,
     setSelectedFalse,
   } = useContext(PosGlobalContext);
-  // useEffect(() => {
-  //   loadCategories();
-  // }, []);
 
   const handleClick = (e) => {
     falseReviewOrder();

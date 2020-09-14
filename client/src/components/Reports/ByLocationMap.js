@@ -2,7 +2,6 @@ import React from 'react';
 import MapData from './MapData';
 
 export default function ByLocationMap(props) {
-  console.log('hello world');
   const salesByLocation = props.salesData;
   const locations = props.locations;
   const combineByLocation = [];
@@ -41,6 +40,5 @@ export default function ByLocationMap(props) {
     };
     finalSales.push(averages);
   });
-  console.log(usedLocations);
   return <MapData sales={finalSales} locations={usedLocations} />;
 }

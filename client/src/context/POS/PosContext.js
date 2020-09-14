@@ -18,7 +18,6 @@ const initialState = {
   categories: [],
   items: '',
   itemEditKey: 0,
-  error: null,
   categoryKey: '',
   displayItemKey: '',
   numberOfItemsForOrder: 1,
@@ -296,6 +295,16 @@ export const PosContextProvider = ({ children }) => {
     }
   };
 
+  const resetPos = () => {
+    try {
+      dispatch({
+        type: 'RESET',
+      });
+    } catch (err) {
+      console.error(err, 'reset');
+    }
+  };
+
   return (
     <PosGlobalContext.Provider
       value={{
@@ -338,6 +347,7 @@ export const PosContextProvider = ({ children }) => {
         setCustomerName,
         setPaymentType,
         postOrder,
+        resetPos,
       }}
     >
       {children}

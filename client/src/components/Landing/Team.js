@@ -25,17 +25,20 @@ function Team() {
               <p className="text-muted">Full Stack Developer</p>
               <ul className="list-inline social-buttons">
                 <li className="list-inline-item">
-                  <a href="#something">
+                  <a
+                    href="https://www.linkedin.com/in/ffej-caplan-43701357/"
+                    target="_blank"
+                  >
                     <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#something">
+                  <a href="https://github.com/ffejcaplan" target="_blank">
                     <i className="fa fa-github fa-lg"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#something">
+                  <a href="#something" target="_blank">
                     <i className="fa fa-book"></i>
                   </a>
                 </li>
@@ -53,17 +56,23 @@ function Team() {
               <p className="text-muted">Full Stack Developer</p>
               <ul className="list-inline social-buttons">
                 <li className="list-inline-item">
-                  <a href="https://www.linkedin.com/in/sam-bonias/">
+                  <a
+                    href="https://www.linkedin.com/in/sam-bonias/"
+                    target="_blank"
+                  >
                     <i className="fa fa-linkedin"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://github.com/sbonias/">
+                  <a href="https://github.com/sbonias/" target="_blank">
                     <i className="fa fa-github fa-lg"></i>
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://sbonias.github.io/react-portfolio/">
+                  <a
+                    href="https://sbonias.github.io/react-portfolio/"
+                    target="_blank"
+                  >
                     <i className="fa fa-book"></i>
                   </a>
                 </li>

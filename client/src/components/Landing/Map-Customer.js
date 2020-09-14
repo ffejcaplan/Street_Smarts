@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Logo from '../../assets/logos/StreetSmartsLogo3.jpg';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
 import { LocationGlobalContext } from '../../context/Location/LocationsContext';
-
-// import * as truckData from '../../data/food-trucks.json';
 
 function Map() {
   const { activeLocation, pinnedStatusCheck } = useContext(
