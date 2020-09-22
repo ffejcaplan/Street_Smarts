@@ -1,3 +1,28 @@
+There are currently over 25,000 food trucks in the United States. While apps like Yelp and Google maps have successfully helped customers find brick and mortar restaurants in every city across the country, no app has managed the same coverage of service for food trucks and carts. 
+
+# A New Solution
+## Assessing the market gap
+Why has no food truck app been successful in cornering the market. A curosry glance at any app-store reveals that there are dozens of active regional food-truck apps. Some cities have multiple. Yet none have cornered the market the way other sites have done so for other kinds of businesses. Why is that?
+
+### Picking The Wrong Point in the Food Chain
+There are two major issues in the business models behind most food truck apps:
+1. These apps do not integrate smoothly into the day-to-day operations of food truck and carts.
+2. Often times, the app builders monetize by charging food trucks to join, disincentivizing food trucks to join in the first place. 
+
+### The Ultimate Question
+Why isn't there a successful food truck app? The answer isn't a matter of tech or design. The answer is that no app has been able to achieve critical usership volume to attain widespread viability. Which makes the ultimate question: "How do you get food trucks to use your app?"
+
+### Our Solution
+We took a different approach to answering this question. While other apps focused on creating a consumer-facing app, we started by focusing on creating a value-add for food truck operators that would integrate seemlessly into their day-to-day operations. Our solution was to build a POS system with robust reporting that easily pinned truck locations to a consumer-facing site. By focusing on creating an app for food truck operators, we can  cross the threshold needed to create a viable food truck finder app. 
+
+We built a prototype for a Food Truck specific POS system equipped with GPS functionality. In addition to an easy-to-use POS interface, Street Smarts allows food truck operators to track their sales data by location, providing in depth reporting on sales by GPS coordinates. To use this feature, food trucks pin their location through the POS system each time they open for business. We then take that GPS data and display it on a consumer facing landing page. 
+
+### Street Smarts
+The link provided brings you to the consumer facing landing page, which provides a bit of information about the app and the team who built it. To checkout the POS system, click the green button in the services section. From there, you test out the functionality of the POS system. 
+
+
+
+
 # User Story
 
 As a food truck owner and operator, I want a Point of Sale System that allows me to do the following:
@@ -39,13 +64,6 @@ I also want consumers to be able to find my truck on a map based on my location 
   - It will the ask the customer if they'd like to add a tip with 3 preset options: 17%, 20%, 25%
 - Once complete, the order will appear as a pop-up window as if it were a ticket for the kitchen
 
-### Inventory
-
-- If an employee wants to view everyitem that has ever been on the menu, they can do so from the inventory page. Like the POS page, it'll be organized by category
-- From this page an emoployee can do the following:
-  - Add a new item to the menu
-  - Take an item off the inactive menu and make it active
-  - Take an item off the active menu and make it inactive
 
 ### Sales
 
