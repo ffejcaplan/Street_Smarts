@@ -38,7 +38,7 @@ function Team() {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#something" target="_blank">
+                  <a href="https://hurried-fuel.surge.sh/" target="_blank">
                     <i className="fa fa-book"></i>
                   </a>
                 </li>
